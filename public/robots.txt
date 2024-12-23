@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.geekytechh.in
+
+# Sitemaps
+Sitemap: https://www.geekytechh.in/sitemap.xml
