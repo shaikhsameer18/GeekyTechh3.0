@@ -145,7 +145,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 text-center">
           <p className="text-gray-600 dark:text-gray-400 text-sm">
-            &copy; {currentYear} GeekyTechh. All rights reserved.
+            &copy; 2022 - {currentYear} GeekyTechh. All rights reserved.
           </p>
         </div>
       </div>

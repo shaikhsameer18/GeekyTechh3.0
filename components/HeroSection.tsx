@@ -1,10 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { Phone } from 'lucide-react'
 // import Image from 'next/image'
-// import hero1 from "@/app/assets/hero2.jpg"
 
 const roles = [
   "Web Developer",
@@ -39,22 +38,12 @@ export default function HeroSection() {
   }, [text, isDeleting, roleIndex])
 
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-purple-400 to-indigo-600 dark:from-purple-900 dark:to-indigo-800">
-      {/* Background Image using next/image */}
-      <div className="absolute inset-0">
-        {/* <Image
-          src={hero1}
-          alt="Hero Background"
-          layout="fill"
-          objectFit="cover"
-          className="object-cover"
-        /> */}
-      </div>
-
-      <div className="relative z-10 text-center max-w-4xl px-4">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-purple-400 to-indigo-600 dark:from-purple-900 dark:to-indigo-800">
+      {/* Background Image */}
+      <div className="relative z-10 text-center max-w-4xl px-4 py-16">
         {/* Top Text */}
         <motion.h1
-          className="text-3xl md:text-5xl font-bold mb-4 font-poppins text-white dark:text-gray-300"
+          className="text-3xl md:text-5xl font-bold mb-4 font-poppins text-white"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -65,27 +54,35 @@ export default function HeroSection() {
 
         {/* Bottom Text */}
         <motion.p
-          className="text-xl md:text-2xl font-bold font-poppins text-white dark:text-gray-300"
+          className="text-xl md:text-2xl font-bold font-poppins text-white mb-8"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           Bringing Your Digital Ideas to Life
         </motion.p>
 
-        {/* Buttons */}
+        {/* Contact Buttons */}
         <motion.div
-          className="space-x-4 mt-6"
+          className="flex flex-col items-center justify-center gap-3 mt-8 sm:flex-row sm:gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <Link href="#contact" className="bg-purple-600 text-white px-6 py-3 rounded-full font-bold text-lg hover:bg-purple-700 transition duration-300 inline-block">
-            Get Started
-          </Link>
-          <Link href="#services" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-bold text-lg hover:bg-white hover:text-purple-600 transition duration-300 inline-block">
-            View Services
-          </Link>
+          <a
+            href="tel:+917774897159"
+            className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-indigo-600 transition-transform duration-300 bg-white rounded-lg shadow-md hover:shadow-lg hover:scale-105 w-full sm:w-auto"
+          >
+            <Phone className="mr-2" size={18} />
+            Amanullah Shaikh (+91) 77748 97159
+          </a>
+          <a
+            href="tel:+919892506004"
+            className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white transition-transform duration-300 bg-indigo-600 rounded-lg shadow-md hover:shadow-lg hover:scale-105 w-full sm:w-auto"
+          >
+            <Phone className="mr-2" size={18} />
+            Ali Shaikh (+91) 98925 06004
+          </a>
         </motion.div>
       </div>
     </section>
