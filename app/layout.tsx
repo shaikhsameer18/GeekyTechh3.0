@@ -12,7 +12,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: "Geeky Techh - Bringing Your Digital Ideas to Life",
+  title: "Geeky Techh",
   description:
     "Geeky Techh is a professional web development and design agency specializing in creating innovative digital solutions for businesses of all sizes.",
   icons: {
