@@ -1,39 +1,53 @@
-'use client'
+"use client"
 
-import { motion } from 'framer-motion'
-import { FaReact, FaNodeJs, FaPython, FaDocker, FaAws, FaPhp, FaJava } from 'react-icons/fa'
-import { SiJavascript, SiTypescript, SiCss3, SiMongodb, SiTailwindcss, SiNextdotjs, SiHtml5, SiGraphql, SiGoogleads, SiFirebase, SiTensorflow, SiScikitlearn, SiExpress } from 'react-icons/si'
+import { motion } from "framer-motion"
+import { FaReact, FaNodeJs, FaPython, FaDocker, FaAws, FaPhp, FaJava } from "react-icons/fa"
+import {
+  SiJavascript,
+  SiTypescript,
+  SiCss3,
+  SiMongodb,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiHtml5,
+  SiGraphql,
+  SiGoogleads,
+  SiFirebase,
+  SiTensorflow,
+  SiScikitlearn,
+  SiExpress,
+} from "react-icons/si"
 
 const skills = [
   // Frontend Technologies
-  { name: 'HTML', icon: SiHtml5, color: '#E34F26' },
-  { name: 'CSS3', icon: SiCss3, color: '#1572B6' },
-  { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
-  { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
-  { name: 'React.js', icon: FaReact, color: '#61DAFB' },
-  { name: 'Next.js', icon: SiNextdotjs, color: '#000000' },
-  { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
+  { name: "HTML", icon: SiHtml5, color: "#E34F26" },
+  { name: "CSS3", icon: SiCss3, color: "#1572B6" },
+  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  { name: "React.js", icon: FaReact, color: "#61DAFB" },
+  { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
 
   // Backend Technologies
-  { name: 'Node.js', icon: FaNodeJs, color: '#339933' },
-  { name: 'Express.js', icon: SiExpress, color: '#000000' },
-  { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+  { name: "Node.js", icon: FaNodeJs, color: "#339933" },
+  { name: "Express.js", icon: SiExpress, color: "#000000" },
+  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
 
   // Tools & Services
-  { name: 'Docker', icon: FaDocker, color: '#2496ED' },
-  { name: 'AWS', icon: FaAws, color: '#FF9900' },
-  { name: 'GraphQL', icon: SiGraphql, color: '#E535AB' },
-  { name: 'Google Ads', icon: SiGoogleads, color: '#F4B400' },
-  { name: 'Firebase', icon: SiFirebase, color: '#FFCA28' },
+  { name: "Docker", icon: FaDocker, color: "#2496ED" },
+  { name: "AWS", icon: FaAws, color: "#FF9900" },
+  { name: "GraphQL", icon: SiGraphql, color: "#E535AB" },
+  { name: "Google Ads", icon: SiGoogleads, color: "#F4B400" },
+  { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
 
   // Additional Technologies
-  { name: 'PHP', icon: FaPhp, color: '#777BB4' },
-  { name: 'Java', icon: FaJava, color: '#007396' },
-  { name: 'Python', icon: FaPython, color: '#3776AB' },
+  { name: "PHP", icon: FaPhp, color: "#777BB4" },
+  { name: "Java", icon: FaJava, color: "#007396" },
+  { name: "Python", icon: FaPython, color: "#3776AB" },
 
   // AI/ML Technologies
-  { name: 'TensorFlow', icon: SiTensorflow, color: '#FF6F00' },
-  { name: 'Scikit-learn', icon: SiScikitlearn, color: '#F7931E' },
+  { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" },
+  { name: "Scikit-learn", icon: SiScikitlearn, color: "#F7931E" },
 ]
 
 export default function SkillsSection() {
@@ -71,3 +85,4 @@ export default function SkillsSection() {
     </section>
   )
 }
+

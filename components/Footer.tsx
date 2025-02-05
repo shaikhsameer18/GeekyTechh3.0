@@ -1,81 +1,77 @@
-'use client';
+"use client"
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { useState } from 'react';
-import { useTheme } from 'next-themes';
-import { Github, Linkedin, Instagram } from 'lucide-react';
-import blackLogo from '@/app/assets/blacklogo.png';
-import whiteLogo from '@/app/assets/whitelogo.png';
+import Link from "next/link"
+import Image from "next/image"
+import { useState } from "react"
+import { useTheme } from "next-themes"
+import { Github, Linkedin, Instagram } from "lucide-react"
+import blackLogo from "@/app/assets/blacklogo.png"
+import whiteLogo from "@/app/assets/whitelogo.png"
 
 export default function Footer() {
-  const { theme } = useTheme();
-  const currentYear = new Date().getFullYear();
-  const [email, setEmail] = useState<string>('');
-  const [status, setStatus] = useState<string>('');
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const { theme } = useTheme()
+  const currentYear = new Date().getFullYear()
+  const [email, setEmail] = useState<string>("")
+  const [status, setStatus] = useState<string>("")
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
+    setEmail(e.target.value)
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setStatus('Submitting...');
+    e.preventDefault()
+    setIsSubmitting(true)
+    setStatus("Submitting...")
 
     try {
-      const response = await fetch('https://formspree.io/f/xdkkobwo', {
-        method: 'POST',
+      const response = await fetch("https://formspree.io/f/xdkkobwo", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: email,
         }),
-      });
+      })
 
       if (response.ok) {
-        setStatus('Subscription successful!');
-        setEmail('');
+        setStatus("Subscription successful!")
+        setEmail("")
       } else {
-        setStatus('Something went wrong. Please try again.');
+        setStatus("Something went wrong. Please try again.")
       }
     } catch {
-      setStatus('Something went wrong. Please try again.');
+      setStatus("Something went wrong. Please try again.")
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting(false)
     }
-  };
+  }
 
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 py-8">
+    <footer className="bg-gray-100 dark:bg-gray-900 py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-2 lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <Image
-                src={theme === 'dark' ? whiteLogo : blackLogo}
+                src={theme === "dark" ? whiteLogo : blackLogo}
                 alt="Geekytechh Logo"
                 className="h-16 w-auto object-contain"
                 width={64}
                 height={64}
                 priority
               />
-              <h3 className="text-xl font-bold text-primary-600 dark:text-primary-400 font-poppins">
-                Geeky Techh
-              </h3>
+              <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 font-poppins">Geeky Techh</h3>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">
-              Bringing your digital ideas to life.
-            </p>
+            <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">Bringing your digital ideas to life.</p>
             <div className="flex space-x-4">
               <a
                 href="https://github.com/geekytechh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
+                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
               >
                 <Github className="w-5 h-5" />
               </a>
@@ -83,7 +79,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/geekytechh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
+                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -91,7 +87,7 @@ export default function Footer() {
                 href="https://www.instagram.com/geeky.techh/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
+                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -100,13 +96,13 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="col-span-1">
-            <h4 className="text-lg font-semibold mb-4 font-poppins">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-4 font-poppins text-gray-800 dark:text-gray-200">Quick Links</h4>
             <nav className="flex flex-col space-y-2 text-sm">
-              {['Home', 'Services', 'Skills', 'Projects', 'Team', 'Contact'].map((item) => (
+              {["Home", "Services", "Skills", "Projects", "Team", "Contact"].map((item) => (
                 <Link
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
+                  className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
                 >
                   {item}
                 </Link>
@@ -116,7 +112,7 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div className="col-span-1">
-            <h4 className="text-lg font-semibold mb-4 font-poppins">Newsletter</h4>
+            <h4 className="text-lg font-semibold mb-4 font-poppins text-gray-800 dark:text-gray-200">Newsletter</h4>
             <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">
               Stay updated with our latest news and offers.
             </p>
@@ -128,14 +124,14 @@ export default function Footer() {
                 onChange={handleEmailChange}
                 placeholder="Your email"
                 required
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white text-sm"
+                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white text-sm"
               />
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`bg-primary-600 text-white px-4 py-2 rounded-md text-sm hover:bg-primary-700 transition ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`bg-purple-600 text-white px-4 py-2 rounded-md text-sm hover:bg-purple-700 transition ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
               >
-                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                {isSubmitting ? "Subscribing..." : "Subscribe"}
               </button>
               {status && <p className="mt-2 text-sm text-center text-gray-600 dark:text-gray-400">{status}</p>}
             </form>
@@ -150,6 +146,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }
 

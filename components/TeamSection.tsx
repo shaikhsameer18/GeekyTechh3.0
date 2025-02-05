@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { Github, Linkedin, Globe, BrainCircuit, BriefcaseBusiness, Code, Palette } from 'lucide-react'
+import { motion } from "framer-motion"
+import Image from "next/image"
+import { Github, Linkedin, Globe, BrainCircuit, BriefcaseBusiness, Code, Palette } from "lucide-react"
 import sameer from "@/app/assets/team/sam.jpg"
 import ali from "@/app/assets/team/ali.jpg"
 import amanu from "@/app/assets/team/amanu.jpg"
@@ -10,13 +10,13 @@ import irfan from "@/app/assets/team/irfan.jpg"
 
 const team = [
   {
-    name: 'Sameer Ahmed',
-    role: 'Web Developer & ML Engineer',
+    name: "Sameer Ahmed",
+    role: "Web Developer & ML Engineer",
     image: sameer,
     icon: Code,
-    linkedin: 'https://www.linkedin.com/in/sameerahmed08',
-    github: 'https://github.com/shaikhsameer18',
-    portfolio: 'https://dollarsportfolio.vercel.app/'
+    linkedin: "https://www.linkedin.com/in/sameerahmed08",
+    github: "https://github.com/shaikhsameer18",
+    portfolio: "https://dollarsportfolio.vercel.app/",
   },
   {
     name: "Ali Shaikh",
@@ -25,7 +25,7 @@ const team = [
     icon: Palette,
     linkedin: "https://www.linkedin.com/in/mohdali0",
     github: "https://github.com/mohdali03",
-    portfolio: "https://mohd-ali.vercel.app/"
+    portfolio: "https://mohd-ali.vercel.app/",
   },
   {
     name: "Amanullah Shaikh",
@@ -33,7 +33,6 @@ const team = [
     image: amanu,
     icon: BriefcaseBusiness,
     linkedin: "https://www.linkedin.com/in/mohd-amanullah-1282a2242",
-    github: "https://github.com/shaikhmohdamanullah04"
   },
   {
     name: "Irfan Ansari",
@@ -42,8 +41,8 @@ const team = [
     icon: BrainCircuit,
     linkedin: "https://www.linkedin.com/in/ansari-irfan-/",
     github: "https://github.com/Ansari-Irfan-360",
-    portfolio: "https://ansariirfan.vercel.app/"
-  }
+    portfolio: "https://ansariirfan.vercel.app/",
+  },
 ]
 
 export default function TeamSection() {
@@ -51,7 +50,7 @@ export default function TeamSection() {
     <section id="team" className="py-20 bg-white dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-center mb-12 font-poppins"
+          className="text-3xl md:text-4xl font-bold text-center mb-12 font-poppins text-gray-800 dark:text-gray-200"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -59,7 +58,7 @@ export default function TeamSection() {
         >
           Our Team
         </motion.h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member, index) => (
             <motion.div
               key={index}
@@ -71,28 +70,47 @@ export default function TeamSection() {
             >
               <div className="relative">
                 <Image
-                  src={member.image}
+                  src={member.image || "/placeholder.svg"}
                   alt={member.name}
                   width={300}
                   height={300}
-                  className="w-full h-64 object-cover object-center" // Using object-cover with object-center for middle zoom
+                  className="w-full h-64 object-cover object-center"
                 />
                 <div className="absolute top-0 right-0 bg-purple-600 p-2 rounded-bl-lg">
                   <member.icon className="w-6 h-6 text-white" />
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-1 font-poppins">{member.name}</h3>
+                <h3 className="text-xl font-semibold mb-1 font-poppins text-gray-800 dark:text-gray-200">
+                  {member.name}
+                </h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">{member.role}</p>
                 <div className="flex space-x-4">
-                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+                  >
                     <Linkedin className="w-5 h-5" />
                   </a>
-                  <a href={member.github} target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">
-                    <Github className="w-5 h-5" />
-                  </a>
+                  {member.github && (
+                    <a
+                      href={member.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+                    >
+                      <Github className="w-5 h-5" />
+                    </a>
+                  )}
                   {member.portfolio && (
-                    <a href={member.portfolio} target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">
+                    <a
+                      href={member.portfolio}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+                    >
                       <Globe className="w-5 h-5" />
                     </a>
                   )}
