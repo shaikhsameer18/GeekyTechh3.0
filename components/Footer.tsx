@@ -49,29 +49,31 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 py-12">
+    <footer className="bg-gray-50 dark:bg-gray-900 py-10">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
           {/* Brand Section */}
-          <div className="col-span-1 md:col-span-2 lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
+          <div className="lg:col-span-4">
+            <div className="flex items-center space-x-3 mb-4">
               <Image
                 src={theme === "dark" ? whiteLogo : blackLogo}
                 alt="Geekytechh Logo"
-                className="h-16 w-auto object-contain"
-                width={64}
-                height={64}
+                className="h-12 w-auto object-contain"
+                width={120}
+                height={120}
                 priority
               />
-              <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 font-poppins">Geeky Techh</h3>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Geeky Techh</h3>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">Bringing your digital ideas to life.</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 max-w-sm">
+              Bringing your digital ideas to life with innovative solutions.
+            </p>
             <div className="flex space-x-4">
               <a
                 href="https://github.com/geekytechh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
+                className="text-gray-500 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors duration-200"
               >
                 <Github className="w-5 h-5" />
               </a>
@@ -79,7 +81,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/geekytechh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
+                className="text-gray-500 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors duration-200"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -87,7 +89,7 @@ export default function Footer() {
                 href="https://www.instagram.com/geeky.techh/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
+                className="text-gray-500 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors duration-200"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -95,14 +97,14 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="col-span-1">
-            <h4 className="text-lg font-semibold mb-4 font-poppins text-gray-800 dark:text-gray-200">Quick Links</h4>
-            <nav className="flex flex-col space-y-2 text-sm">
+          <div className="lg:col-span-3">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-800 dark:text-gray-200 mb-4">Quick Links</h4>
+            <nav className="flex flex-col space-y-2">
               {["Home", "Services", "Skills", "Projects", "Team", "Contact"].map((item) => (
                 <Link
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
                 >
                   {item}
                 </Link>
@@ -111,36 +113,39 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div className="col-span-1">
-            <h4 className="text-lg font-semibold mb-4 font-poppins text-gray-800 dark:text-gray-200">Newsletter</h4>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">
-              Stay updated with our latest news and offers.
-            </p>
-            <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
-              <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={handleEmailChange}
-                placeholder="Your email"
-                required
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white text-sm"
-              />
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`bg-purple-600 text-white px-4 py-2 rounded-md text-sm hover:bg-purple-700 transition ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
-              >
-                {isSubmitting ? "Subscribing..." : "Subscribe"}
-              </button>
-              {status && <p className="mt-2 text-sm text-center text-gray-600 dark:text-gray-400">{status}</p>}
+          <div className="lg:col-span-5">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-800 dark:text-gray-200 mb-4">Newsletter</h4>
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div className="flex">
+                <input
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  placeholder="Enter your email"
+                  required
+                  className="flex-1 px-3 py-2 text-sm rounded-l-md border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-purple-500 dark:bg-gray-800 dark:text-white"
+                />
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`px-4 py-2 text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 rounded-r-md transition-colors duration-200 ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
+                >
+                  {isSubmitting ? "..." : "Subscribe"}
+                </button>
+              </div>
+              {status && (
+                <p className="text-xs text-gray-600 dark:text-gray-400">
+                  {status}
+                </p>
+              )}
             </form>
           </div>
         </div>
 
         {/* Footer Bottom */}
-        <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 text-center">
-          <p className="text-gray-600 dark:text-gray-400 text-sm">
+        <div className="mt-10 pt-6 border-t border-gray-200 dark:border-gray-800">
+          <p className="text-xs text-center text-gray-600 dark:text-gray-400">
             &copy; 2022 - {currentYear} GeekyTechh. All rights reserved.
           </p>
         </div>

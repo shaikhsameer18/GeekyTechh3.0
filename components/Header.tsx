@@ -28,45 +28,44 @@ export default function Header() {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white dark:bg-gray-900 shadow-md py-4" : "bg-transparent py-2"
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 dark:bg-gray-900/90 shadow-lg py-2" : "bg-transparent py-3"}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center h-14 mt-2">
-        {/* Mobile Menu Toggle Button */}
+      <div className="container mx-auto px-6 flex justify-between items-center h-16">
+        {/* Mobile Menu Button */}
         <motion.button
-          className="md:hidden p-2 text-gray-800 dark:text-gray-200"
+          className="md:hidden p-1 text-gray-800 dark:text-gray-200"
           onClick={toggleMenu}
           aria-label="Toggle menu"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </motion.button>
 
         {/* Logo */}
-        <Link href="/" className="flex items-center justify-center md:justify-start flex-grow md:flex-grow-0">
+        <Link href="/" className="flex items-center justify-center md:justify-start flex-grow md:flex-grow-0 -my-4">
           {mounted && (
             <Image
               src={theme === "dark" ? whiteLogo : blackLogo}
               alt="Logo"
-              className="max-h-16 md:max-h-28 object-contain"
-              width={180}
-              height={180}
+              className="max-h-24 w-auto object-contain"
+              width={240}
+              height={240}
               priority
             />
           )}
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex md:items-center md:space-x-2">
+        <nav className="hidden md:flex md:items-center md:space-x-6">
           {navItems.map((item) => (
             <motion.div key={item} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href={`#${item.toLowerCase()}`}
-                className="block text-gray-800 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300 px-3"
+                className="text-gray-800 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300 text-base font-medium"
               >
                 {item}
               </Link>
@@ -74,9 +73,9 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Theme Toggle Button */}
+        {/* Theme Toggle */}
         <motion.button
-          className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300"
+          className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 transition-colors duration-300"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           aria-label="Toggle theme"
           whileHover={{ scale: 1.1 }}
@@ -91,39 +90,33 @@ export default function Header() {
         </motion.button>
       </div>
 
-      {/* Mobile Navigation Menu */}
+      {/* Mobile Menu */}
       {isMenuOpen && (
         <motion.div
-          className={`
-      absolute top-full left-0 right-0 bg-white dark:bg-gray-900 shadow-md md:hidden flex flex-col items-start space-y-2 py-4 px-4 
-      transition-all duration-300 ease-in-out 
-      ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 md:max-h-screen md:opacity-100'}
-      overflow-hidden md:overflow-visible
-    `}
+          className="absolute top-full left-0 right-0 bg-white dark:bg-gray-900 shadow-lg md:hidden"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          {navItems.map((item) => (
-            <motion.div
-              key={item}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full"
-            >
-              <Link
-                href={`#${item.toLowerCase()}`}
-                className="block text-gray-800 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300 py-2"
-                onClick={() => setIsMenuOpen(false)}
+          <div className="py-4 px-6 space-y-4">
+            {navItems.map((item) => (
+              <motion.div
+                key={item}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {item}
-              </Link>
-            </motion.div>
-          ))}
+                <Link
+                  href={`#${item.toLowerCase()}`}
+                  className="block text-gray-800 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300 text-base font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item}
+                </Link>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       )}
-
-
     </motion.header>
   )
 }

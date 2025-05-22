@@ -1,16 +1,16 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import { Phone } from "lucide-react";
+import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import { Code2, Laptop, Palette, Layers, Brain, Phone } from "lucide-react"
 
 const roles = [
-  "Web Developer",
-  "Software Engineer",
-  "Graphic Designer",
-  "Full Stack Developer",
-  "AI/ML Developer",
-];
+  { text: "Web Developer", icon: Code2 },
+  { text: "Software Engineer", icon: Laptop },
+  { text: "UI/UX Designer", icon: Palette },
+  { text: "Full Stack Dev", icon: Layers },
+  { text: "AI/ML Engineer", icon: Brain }
+]
 
 export default function HeroSection() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -27,70 +27,101 @@ export default function HeroSection() {
             setRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
           }
         } else {
-          setText(roles[roleIndex].slice(0, text.length + 1));
-          if (text === roles[roleIndex]) {
-            setIsDeleting(true);
+          setText(roles[roleIndex].text.slice(0, text.length + 1));
+          if (text === roles[roleIndex].text) {
+            setTimeout(() => setIsDeleting(true), 2500);
           }
         }
       },
-      isDeleting ? 50 : 150
+      isDeleting ? 50 : 100
     );
 
     return () => clearTimeout(timer);
   }, [text, isDeleting, roleIndex]);
 
+  const CurrentIcon = roles[roleIndex].icon;
+
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-900 dark:to-indigo-900"
+      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 dark:from-purple-900 dark:via-indigo-900 dark:to-blue-900"
     >
-      <div className="relative z-10 text-center max-w-4xl px-4 py-16">
-        <motion.h1
-          className="text-3xl md:text-5xl font-bold mb-4 text-white font-poppins"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          Looking for a{" "}
-          <span className="font-bold text-yellow-300">{text}</span>
-          <span className="animate-blink">|</span>
-        </motion.h1>
-
-        <motion.p
-          className="text-xl md:text-2xl font-bold text-white mb-12 font-poppins"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          Bringing Your Digital Ideas to Life
-        </motion.p>
-
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 text-center">
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8 }}
+          className="space-y-8 max-w-4xl mx-auto"
         >
-          <motion.a
-            href="tel:+917774897159"
-            className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-indigo-600 transition-transform duration-300 bg-white rounded-lg shadow-md hover:shadow-lg hover:scale-105 w-full sm:w-auto"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <div className="space-y-4">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-tight tracking-tight">
+              Looking for a{" "}
+              <motion.span
+                key={roleIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="text-yellow-300 dark:text-yellow-400 inline-flex items-center gap-3"
+              >
+                {text}
+                <motion.span
+                  key={`icon-${roleIndex}`}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                >
+                  <CurrentIcon className="w-10 h-10 lg:w-12 lg:h-12" />
+                </motion.span>
+              </motion.span>
+            </h1>
+            <p className="text-xl md:text-2xl font-bold text-white/90 tracking-wide">
+              Bringing Your Digital Ideas to Life
+            </p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 sm:mt-12 w-full max-w-[90%] sm:max-w-none mx-auto"
           >
-            <Phone className="mr-2" size={18} />
-            Amanullah Shaikh (+91) 77748 97159
-          </motion.a>
-          <motion.a
-            href="tel:+919892506004"
-            className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white transition-transform duration-300 bg-indigo-600 rounded-lg shadow-md hover:shadow-lg hover:scale-105 w-full sm:w-auto"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Phone className="mr-2" size={18} />
-            Ali Shaikh (+91) 98925 06004
-          </motion.a>
+            <a
+              href="tel:+917774897159"
+              className="group bg-white dark:bg-white/90 rounded-full py-3 px-6 flex items-center gap-3 hover:bg-opacity-95 transition-all duration-300 w-full sm:w-auto sm:min-w-[320px]"
+            >
+              <Phone className="w-5 h-5 text-purple-800 dark:text-purple-900 shrink-0" />
+              <div className="flex items-center justify-between w-full">
+                <span className="text-base text-purple-800 dark:text-purple-900 font-bold">Amanullah Shaikh</span>
+                <span className="text-base text-purple-600 dark:text-purple-800 font-semibold">+91 77748 97159</span>
+              </div>
+            </a>
+
+            <a
+              href="tel:+919892506004"
+              className="group bg-blue-600 dark:bg-blue-700 rounded-full py-3 px-6 flex items-center gap-3 hover:bg-blue-700 dark:hover:bg-blue-800 transition-all duration-300 w-full sm:w-auto sm:min-w-[320px] border border-white"
+            >
+              <Phone className="w-5 h-5 text-white shrink-0" />
+              <div className="flex items-center justify-between w-full">
+                <span className="text-base text-white  font-bold">Ali Shaikh</span>
+                <span className="text-base text-white/90 font-semibold">+91 98925 06004</span>
+              </div>
+            </a>
+          </motion.div>
         </motion.div>
       </div>
+
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="1"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
     </section>
-  );
+  )
 }

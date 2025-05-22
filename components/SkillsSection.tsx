@@ -52,32 +52,44 @@ const skills = [
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-20 bg-white dark:bg-gray-800">
-      <div className="container mx-auto px-4">
-        <motion.h2
-          className="text-3xl md:text-4xl font-bold text-center mb-12 font-poppins text-gray-800 dark:text-gray-200"
+    <section id="skills" className="py-24 bg-white dark:bg-gray-900">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <motion.div
+          className="text-center mb-16"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          Our Skills
-        </motion.h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 text-transparent bg-clip-text mb-4">
+            Our Skills
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 mx-auto rounded-full mb-4"></div>
+        </motion.div>
+        
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6 items-center max-w-5xl mx-auto">
           {skills.map((skill, index) => (
             <motion.div
               key={index}
-              className="flex flex-col items-center"
-              initial={{ opacity: 0, scale: 0.5 }}
+              className="group"
+              initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.1 }}
             >
-              <div className="w-20 h-20 mb-4 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300">
-                <skill.icon size={40} color={skill.color} />
+              <div className="relative p-4 bg-gray-100 dark:bg-gray-800 rounded-xl hover:bg-white dark:hover:bg-gray-700 transition-all duration-300 shadow-sm hover:shadow-md">
+                <div className="flex items-center space-x-3">
+                  <skill.icon 
+                    size={32} 
+                    style={{ color: skill.color }} 
+                    className="transition-transform duration-300 group-hover:scale-110" 
+                  />
+                  <span className="text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300 text-sm font-medium">
+                    {skill.name}
+                  </span>
+                </div>
               </div>
-              <p className="text-center font-semibold text-gray-800 dark:text-gray-200">{skill.name}</p>
             </motion.div>
           ))}
         </div>
