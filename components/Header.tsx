@@ -24,7 +24,7 @@ export default function Header() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
-  const navItems = ["Home", "Services", "Skills", "Projects", "Team", "Contact"]
+  const navItems = ["Home", "Services", "Skills", "Projects", "Contact"]
 
   return (
     <motion.header

@@ -52,21 +52,21 @@ const skills = [
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-24 bg-white dark:bg-gray-900">
+    <section id="skills" className="py-24 bg-gray-100 dark:bg-gray-900">
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 text-transparent bg-clip-text mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Our Skills
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 mx-auto rounded-full mb-4"></div>
+          <div className="h-px w-24 bg-purple-600 dark:bg-purple-400 mx-auto"></div>
         </motion.div>
-        
+
         <div className="flex flex-wrap justify-center gap-4 md:gap-6 items-center max-w-5xl mx-auto">
           {skills.map((skill, index) => (
             <motion.div
@@ -80,10 +80,10 @@ export default function SkillsSection() {
             >
               <div className="relative p-4 bg-gray-100 dark:bg-gray-800 rounded-xl hover:bg-white dark:hover:bg-gray-700 transition-all duration-300 shadow-sm hover:shadow-md">
                 <div className="flex items-center space-x-3">
-                  <skill.icon 
-                    size={32} 
-                    style={{ color: skill.color }} 
-                    className="transition-transform duration-300 group-hover:scale-110" 
+                  <skill.icon
+                    size={32}
+                    style={{ color: skill.color }}
+                    className="transition-transform duration-300 group-hover:scale-110"
                   />
                   <span className="text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300 text-sm font-medium">
                     {skill.name}

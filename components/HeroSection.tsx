@@ -88,25 +88,20 @@ export default function HeroSection() {
           >
             <a
               href="tel:+917774897159"
-              className="group bg-white dark:bg-white/90 rounded-full py-3 px-6 flex items-center gap-3 hover:bg-opacity-95 transition-all duration-300 w-full sm:w-auto sm:min-w-[320px]"
+              className="group bg-white dark:bg-white/90 rounded-full py-3 sm:py-4 px-6 sm:px-8 flex items-center gap-3 sm:gap-4 hover:bg-opacity-95 transition-all duration-300 w-[90%] sm:w-auto sm:min-w-[360px] shadow-lg hover:shadow-xl mx-auto"
             >
-              <Phone className="w-5 h-5 text-purple-800 dark:text-purple-900 shrink-0" />
-              <div className="flex items-center justify-between w-full">
-                <span className="text-base text-purple-800 dark:text-purple-900 font-bold">Amanullah Shaikh</span>
-                <span className="text-base text-purple-600 dark:text-purple-800 font-semibold">+91 77748 97159</span>
+              <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-purple-800 dark:text-purple-900 shrink-0" />
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-1 sm:gap-0">
+                <span className="text-base sm:text-lg text-purple-800 dark:text-purple-900 font-bold tracking-wide">
+                  Amanullah Shaikh
+                </span>
+                <span className="text-sm sm:text-lg text-purple-600 dark:text-purple-800 font-semibold tracking-wide sm:ml-4">
+                  +91 77748 97159
+                </span>
               </div>
             </a>
 
-            <a
-              href="tel:+919892506004"
-              className="group bg-blue-600 dark:bg-blue-700 rounded-full py-3 px-6 flex items-center gap-3 hover:bg-blue-700 dark:hover:bg-blue-800 transition-all duration-300 w-full sm:w-auto sm:min-w-[320px] border border-white"
-            >
-              <Phone className="w-5 h-5 text-white shrink-0" />
-              <div className="flex items-center justify-between w-full">
-                <span className="text-base text-white  font-bold">Ali Shaikh</span>
-                <span className="text-base text-white/90 font-semibold">+91 98925 06004</span>
-              </div>
-            </a>
+
           </motion.div>
         </motion.div>
       </div>
@@ -116,7 +111,7 @@ export default function HeroSection() {
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="1"/>
+              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="1" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />

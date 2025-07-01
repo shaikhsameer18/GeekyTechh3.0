@@ -100,7 +100,7 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-800 dark:text-gray-200 mb-4">Quick Links</h4>
             <nav className="flex flex-col space-y-2">
-              {["Home", "Services", "Skills", "Projects", "Team", "Contact"].map((item) => (
+              {["Home", "Services", "Skills", "Projects", "Contact"].map((item) => (
                 <Link
                   key={item}
                   href={`#${item.toLowerCase()}`}
