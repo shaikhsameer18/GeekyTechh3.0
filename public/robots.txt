@@ -1,6 +1,10 @@
-# *
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Crawl-delay: 10
 
 # Host
 Host: https://www.geekytechh.in
