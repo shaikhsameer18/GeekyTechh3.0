@@ -4,6 +4,8 @@ Welcome to **GeekyTechh 3.0**! This repository is for **GeekyTechh**, a Freelanc
 
 ---
 
+![Screenshot](https://i.postimg.cc/W1SJVNs1/Screenshot-2025-07-21-203340.png)
+
 ## Features
 
 - **Freelance Service Platform**: Connect clients with skilled freelancers.
