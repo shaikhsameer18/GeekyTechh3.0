@@ -1,56 +1,58 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
+import NextImage from "next/image"
 import Logo from "@/app/assets/whitelogo.png"
 
-export default function Preloader() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [imageLoaded, setImageLoaded] = useState(false)
+interface PreloaderProps {
+  onFinish: () => void
+}
 
+export default function Preloader({ onFinish }: PreloaderProps) {
   useEffect(() => {
-    if (!imageLoaded) return
+    const preloadImages = async () => {
+      const imagePromises = [
+        new Promise(resolve => {
+          const img = new window.Image()
+          img.src = Logo.src
+          img.onload = resolve
+        })
+      ]
 
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 2000)
+      await Promise.all(imagePromises)
 
-    return () => clearTimeout(timer)
-  }, [imageLoaded])
+      setTimeout(() => {
+        onFinish()
+      }, 300)
+    }
+
+    preloadImages()
+  }, [onFinish])
 
   return (
-    <AnimatePresence>
-      {isLoading && (
+    <AnimatePresence mode="wait">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, transition: { duration: 0.3 } }}
+        className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 dark:from-purple-900 dark:via-indigo-900 dark:to-blue-900"
+      >
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 dark:from-purple-900 dark:via-indigo-900 dark:to-blue-900"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4 }}
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ 
-              opacity: imageLoaded ? 1 : 0,
-              scale: imageLoaded ? 1 : 0.8
-            }}
-            transition={{ duration: 0.5 }}
-            className="relative z-10"
-          >
-            <Image
-              src={Logo}
-              alt="Geeky Techh Logo"
-              width={300}
-              height={300}
-              priority
-              onLoadingComplete={() => setImageLoaded(true)}
-              className="mx-auto filter drop-shadow-2xl transition-transform duration-700"
-            />
-          </motion.div>
+          <NextImage
+            src={Logo}
+            alt="Geeky Techh Logo"
+            width={240}
+            height={100}
+            priority
+            className="mx-auto filter drop-shadow-2xl"
+          />
         </motion.div>
-      )}
+      </motion.div>
     </AnimatePresence>
   )
 }
-

@@ -52,7 +52,7 @@ const skills = [
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-24 bg-gray-100 dark:bg-gray-900">
+    <section id="skills" className="py-16 bg-gray-100 dark:bg-gray-900">
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.div
           className="text-center mb-12 md:mb-16"

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import dynamic from "next/dynamic"
 import Preloader from "@/components/Preloader"
 import Header from "@/components/Header"
@@ -16,30 +16,24 @@ const ContactSection = dynamic(() => import("@/components/ContactSection"))
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 3000)
-
-    return () => clearTimeout(timer)
-  }, [])
-
-  if (isLoading) {
-    return <Preloader />
-  }
-
   return (
     <>
-      <Header />
-      <main className="flex flex-col min-h-screen">
-        <HeroSection />
-        <ServicesSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <ContactSection />
-      </main>
-      <Footer />
-      <ScrollToTop />
+      {isLoading ? (
+        <Preloader onFinish={() => setIsLoading(false)} />
+      ) : (
+        <>
+          <Header />
+          <main className="flex flex-col min-h-screen">
+            <HeroSection />
+            <ServicesSection />
+            <SkillsSection />
+            <ProjectsSection />
+            <ContactSection />
+          </main>
+          <Footer />
+          <ScrollToTop />
+        </>
+      )}
     </>
   )
 }
