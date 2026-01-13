@@ -1,13 +1,11 @@
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+
+# Block admin and API routes
 Disallow: /api/
 Disallow: /_next/
-Disallow: /static/
-
-# Crawl-delay: 10
-
-# Host
-Host: https://www.geekytechh.in
+Disallow: /admin/
 
 # Sitemaps
-Sitemap: https://www.geekytechh.in/sitemap.xml
+Sitemap: https://geekytechh.in/sitemap.xml

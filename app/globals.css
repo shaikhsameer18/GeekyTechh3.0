@@ -76,27 +76,34 @@
   animation: blink 1s infinite;
 }
 
-/* Base styles for scrollbar */
+/* Minimal scrollbar styling */
 ::-webkit-scrollbar {
-  width: 12px; /* Set the width of the scrollbar */
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--muted)); /* Use a subtle background for the track */
+  background: #f5f5f5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #7e22ce; /* Set the thumb color to #7E22CE (purple) */
-  border-radius: 10px; /* Optional: round the edges of the thumb */
+  background: #000000;
+  border-radius: 4px;
 }
 
-/* Dark mode scrollbar styles */
+::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}
+
+/* Dark mode scrollbar */
 .dark ::-webkit-scrollbar-track {
-  background: hsl(var(--muted)); /* Darker background for the track */
+  background: #0a0a0a;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: hsl(
-    var(--muted-foreground)
-  ); /* Slightly darker thumb color for dark mode */
+  background: #ffffff;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #cccccc;
 }

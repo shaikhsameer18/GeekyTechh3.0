@@ -4,9 +4,10 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
 import { useTheme } from "next-themes"
-import { Github, Linkedin, Instagram } from "lucide-react"
+import { Github, Linkedin, Instagram, ArrowRight } from "lucide-react"
 import blackLogo from "@/app/assets/blacklogo.png"
 import whiteLogo from "@/app/assets/whitelogo.png"
+import { motion } from "framer-motion"
 
 export default function Footer() {
   const { theme } = useTheme()
@@ -36,85 +37,76 @@ export default function Footer() {
       })
 
       if (response.ok) {
-        setStatus("Subscription successful!")
+        setStatus("Subscribed successfully")
         setEmail("")
       } else {
-        setStatus("Something went wrong. Please try again.")
+        setStatus("Something went wrong")
       }
     } catch {
-      setStatus("Something went wrong. Please try again.")
+      setStatus("Something went wrong")
     } finally {
       setIsSubmitting(false)
     }
   }
 
   return (
-    <footer className="bg-white dark:bg-gray-900 py-8 border-t border-gray-200 dark:border-gray-800 relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6">
-          {/* Brand Section */}
-          <div className="lg:col-span-5 sm:col-span-1">
-            <div className="flex items-center space-x-3 mb-3">
+    <footer className="bg-gray-50 dark:bg-gray-950 border-t border-black/10 dark:border-white/10 py-10 sm:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 mb-8">
+          {/* Brand */}
+          <div className="lg:col-span-5 space-y-4 sm:space-y-5">
+            <div className="flex items-center gap-3">
               <Image
                 src={theme === "dark" ? whiteLogo : blackLogo}
-                alt="Geekytechh Logo"
-                className="h-16 w-auto object-contain"
+                alt="Geeky Techh"
                 width={160}
                 height={64}
-                priority
+                className="h-16 w-auto object-contain"
               />
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                Geeky Techh
-              </h3>
+              <span className="text-2xl font-bold text-black dark:text-white" style={{ fontFamily: 'var(--font-poppins)', letterSpacing: '0.01em' }}>
+                Geeky<span className="text-gray-500">Techh</span>
+              </span>
             </div>
 
-            <p className="text-sm text-gray-700 dark:text-gray-300 mb-3 max-w-md leading-relaxed">
-              Bringing your digital ideas to life with innovative solutions and cutting-edge technology.
+            <p className="text-sm text-gray-600 dark:text-gray-400 max-w-sm leading-relaxed">
+              Crafting exceptional digital experiences with precision and care.
             </p>
-            <div className="flex space-x-3">
-              <a
-                href="https://github.com/geekytechh"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-500 hover:text-white dark:hover:bg-purple-600 transform hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-md"
-                aria-label="GitHub"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/geekytechh"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transform hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-md"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a
-                href="https://www.instagram.com/geeky.techh/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-pink-600 hover:text-white dark:hover:bg-pink-600 transform hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-md"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
+
+            {/* Social Links */}
+            <div className="flex gap-3">
+              {[
+                { icon: Github, href: "https://github.com/geekytechh", label: "GitHub" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/geekytechh", label: "LinkedIn" },
+                { icon: Instagram, href: "https://www.instagram.com/geeky.techh/", label: "Instagram" }
+              ].map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 border border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white rounded-xl transition-all"
+                  aria-label={social.label}
+                  whileHover={{ y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <social.icon className="w-5 h-5 text-black dark:text-white" strokeWidth={1.5} />
+                </motion.a>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
-          <div className="lg:col-span-3 sm:col-span-1">
-            <h4 className="text-base font-bold text-gray-900 dark:text-white mb-3 pb-1 border-b border-gray-200 dark:border-gray-700">
-              Quick Links
+          <div className="lg:col-span-3">
+            <h4 className="text-sm font-heading font-semibold text-black dark:text-white mb-4 uppercase tracking-[0.2em]">
+              Navigation
             </h4>
-            <nav className="flex flex-col space-y-2">
+            <nav className="space-y-2.5">
               {["Home", "Services", "Skills", "Projects", "Contact"].map((item) => (
                 <Link
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-sm text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 flex items-center group transition-all duration-300"
+                  className="block text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors font-medium"
                 >
-                  <span className="w-0 h-0.5 bg-purple-500 group-hover:w-4 mr-0 group-hover:mr-1 transition-all duration-300"></span>
                   {item}
                 </Link>
               ))}
@@ -122,39 +114,36 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div className="lg:col-span-4 sm:col-span-2">
-            <h4 className="text-base font-bold text-gray-900 dark:text-white mb-3 pb-1 border-b border-gray-200 dark:border-gray-700">
+          <div className="lg:col-span-4">
+            <h4 className="text-sm font-heading font-semibold text-black dark:text-white mb-4 uppercase tracking-[0.2em]">
               Newsletter
             </h4>
-            <form onSubmit={handleSubmit} className="space-y-2">
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 p-1 flex">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Subscribe for updates and insights.
+            </p>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="flex gap-3">
                 <input
                   type="email"
                   name="email"
                   value={email}
                   onChange={handleEmailChange}
-                  placeholder="Enter your email"
+                  placeholder="Your email"
                   required
-                  className="flex-1 px-3 py-2 text-sm border-0 focus:outline-none bg-transparent dark:text-white"
+                  className="flex-1 px-5 py-3 bg-white dark:bg-black border border-black/10 dark:border-white/10 focus:border-black dark:focus:border-white rounded-xl outline-none text-black dark:text-white text-sm transition-all"
                 />
-                <button
+                <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`px-4 py-2 text-xs font-medium text-white rounded-lg bg-purple-600 hover:bg-purple-700 transform hover:-translate-y-0.5 transition-all duration-300 ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""
-                    }`}
+                  className="px-5 py-3 bg-black dark:bg-white text-white dark:text-black rounded-xl hover:bg-black/90 dark:hover:bg-white/90 transition-all disabled:opacity-50 shadow-lg hover:shadow-xl"
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {isSubmitting ? "..." : "Subscribe"}
-                </button>
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
               </div>
               {status && (
-                <p
-                  className={`mt-1 text-xs ${status === "Subscription successful!"
-                    ? "text-green-500"
-                    : status === "Submitting..."
-                      ? "text-blue-500"
-                      : "text-red-500"
-                    }`}
-                >
+                <p className={`text-xs font-medium ${status.includes("success") ? "text-green-600" : "text-gray-600 dark:text-gray-400"}`}>
                   {status}
                 </p>
               )}
@@ -162,9 +151,9 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Footer Bottom */}
-        <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 text-center w-full">
-          <p className="text-xs text-gray-600 dark:text-gray-400">
+        {/* Bottom */}
+        <div className="pt-8 border-t border-black/10 dark:border-white/10">
+          <p className="text-xs text-gray-500 dark:text-gray-400 text-center font-medium">
             © {currentYear} Geeky Techh. All rights reserved.
           </p>
         </div>
@@ -172,4 +161,3 @@ export default function Footer() {
     </footer>
   )
 }
-
