@@ -1,5 +1,6 @@
 import { Inter, Poppins, Space_Grotesk, Montserrat } from 'next/font/google'
 import { ThemeProvider } from "@/components/theme-provider"
+import { StructuredData } from "@/components/StructuredData"
 import "./globals.css"
 import type { Metadata } from 'next'
 import React from 'react';
@@ -22,7 +23,7 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://geekytechh.in'),
+  metadataBase: new URL('https://www.geekytechh.in'),
   title: {
     default: "GeekyTechh - Premium Web Development & Digital Solutions | India",
     template: "%s | GeekyTechh"
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     "responsive websites",
     "SEO optimization",
   ],
-  authors: [{ name: "GeekyTechh", url: "https://geekytechh.in" }],
+  authors: [{ name: "GeekyTechh", url: "https://www.geekytechh.in" }],
   creator: "GeekyTechh",
   publisher: "GeekyTechh",
   robots: {
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://geekytechh.in',
+    url: 'https://www.geekytechh.in',
     siteName: 'GeekyTechh',
     title: 'GeekyTechh - Premium Web Development & Digital Solutions',
     description: 'Transform your business with professional web development, e-commerce solutions, and innovative digital experiences from India\'s leading tech agency.',
@@ -87,7 +88,7 @@ export const metadata: Metadata = {
     google: 'YOUR_GOOGLE_VERIFICATION_CODE_HERE',
   },
   alternates: {
-    canonical: 'https://geekytechh.in',
+    canonical: 'https://www.geekytechh.in',
   },
   icons: {
     icon: "/favicon.ico",
@@ -104,6 +105,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${poppins.variable} ${spaceGrotesk.variable} ${montserrat.variable}`}>
       <head>
+        {/* Structured Data for SEO */}
+        <StructuredData />
+
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-GR9TNWBYBG"
