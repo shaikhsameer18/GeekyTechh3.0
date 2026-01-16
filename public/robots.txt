@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.geekytechh.in
+Host: https://geekytechh.in
 
 # Sitemaps
-Sitemap: https://www.geekytechh.in/sitemap.xml
+Sitemap: https://geekytechh.in/sitemap.xml

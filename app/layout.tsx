@@ -23,7 +23,7 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.geekytechh.in'),
+  metadataBase: new URL('https://geekytechh.in'),
   title: {
     default: "GeekyTechh - Premium Web Development & Digital Solutions | India",
     template: "%s | GeekyTechh"
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     "responsive websites",
     "SEO optimization",
   ],
-  authors: [{ name: "GeekyTechh", url: "https://www.geekytechh.in" }],
+  authors: [{ name: "GeekyTechh", url: "https://geekytechh.in" }],
   creator: "GeekyTechh",
   publisher: "GeekyTechh",
   robots: {
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://www.geekytechh.in',
+    url: 'https://geekytechh.in',
     siteName: 'GeekyTechh',
     title: 'GeekyTechh - Premium Web Development & Digital Solutions',
     description: 'Transform your business with professional web development, e-commerce solutions, and innovative digital experiences from India\'s leading tech agency.',
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     google: 'YOUR_GOOGLE_VERIFICATION_CODE_HERE',
   },
   alternates: {
-    canonical: 'https://www.geekytechh.in',
+    canonical: 'https://geekytechh.in',
   },
   icons: {
     icon: "/favicon.ico",

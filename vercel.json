@@ -28,14 +28,14 @@
     ],
     "redirects": [
         {
-            "source": "/:path((?!www\\.).*)",
+            "source": "/:path*",
             "has": [
                 {
                     "type": "host",
-                    "value": "geekytechh.in"
+                    "value": "www.geekytechh.in"
                 }
             ],
-            "destination": "https://www.geekytechh.in/:path*",
+            "destination": "https://geekytechh.in/:path*",
             "permanent": true
         }
     ]

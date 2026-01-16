@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://www.geekytechh.in",
+  siteUrl: "https://geekytechh.in",
   generateRobotsTxt: true,
   outDir: "./public",
   exclude: ["/admin*", "/api/*"],
