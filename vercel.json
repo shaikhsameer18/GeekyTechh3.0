@@ -32,10 +32,10 @@
             "has": [
                 {
                     "type": "host",
-                    "value": "www.geekytechh.in"
+                    "value": "geekytechh.in"
                 }
             ],
-            "destination": "https://geekytechh.in/:path*",
+            "destination": "https://www.geekytechh.in/:path*",
             "permanent": true
         }
     ]
