@@ -28,7 +28,7 @@
     ],
     "redirects": [
         {
-            "source": "/:path*",
+            "source": "/:path((?!_next|api|static|favicon.ico|robots.txt|sitemap.xml).*)",
             "has": [
                 {
                     "type": "host",

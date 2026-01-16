@@ -16,7 +16,7 @@ Write-Host ""
 
 # Commit changes
 Write-Host "💾 Committing changes..." -ForegroundColor Yellow
-$commitMessage = "Fix Google indexing: Update canonical URLs and sitemap`n`n- Set canonical URL to geekytechh.in (without www)`n- Update vercel.json to redirect www to non-www`n- Remove hash URLs from sitemap`n- Update all metadata and robots.txt`n- Fix 'Alternate page with proper canonical tag' error"
+$commitMessage = "Fix Google indexing: Update canonical URLs and fix redirect loop`n`n- Set canonical URL to geekytechh.in (without www)`n- Fix vercel.json redirect to exclude static assets (_next/*)`n- Update all metadata, structured data, and robots.txt`n- Remove hash URLs from sitemap`n- Fix 'Alternate page with proper canonical tag' error`n- Fix 'Redirection error' for JS/CSS/fonts/images"
 git commit -m $commitMessage
 Write-Host ""
 
