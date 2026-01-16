@@ -2,9 +2,16 @@ import { Inter, Poppins, Space_Grotesk, Montserrat } from 'next/font/google'
 import { ThemeProvider } from "@/components/theme-provider"
 import { StructuredData } from "@/components/StructuredData"
 import "./globals.css"
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import React from 'react';
 import Script from 'next/script'
+
+export const viewport: Viewport = {
+  themeColor: '#000000',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const poppins = Poppins({
@@ -25,11 +32,11 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.geekytechh.in'),
   title: {
-    default: "GeekyTechh - Premium Web Development & Digital Solutions | India",
+    default: "GeekyTechh | Premium Web Development & Digital Solutions Agency India",
     template: "%s | GeekyTechh"
   },
   description:
-    "GeekyTechh is a leading web development and digital agency in India, specializing in custom websites, e-commerce platforms, AI/ML solutions, and innovative digital experiences. Transform your business with our professional development services.",
+    "GeekyTechh delivers high-performance custom websites, e-commerce solutions, and cutting-edge digital experiences. We specialize in Next.js, AI/ML, and UI/UX design to transform your brand globally.",
   keywords: [
     "web development India",
     "custom website development",
@@ -91,10 +98,17 @@ export const metadata: Metadata = {
     canonical: 'https://www.geekytechh.in',
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.ico", sizes: "64x64", type: "image/x-icon" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   manifest: '/site.webmanifest',
+  category: 'technology',
 }
 
 export default function RootLayout({
