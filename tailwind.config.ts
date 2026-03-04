@@ -12,6 +12,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "375px",
+        "sm-mid": "500px",
+        "md-mid": "896px",
+      },
       colors: {
         border: "hsl(var(--border, 214, 32%, 91%))",
         input: "hsl(var(--input, 214, 32%, 91%))",
@@ -51,9 +56,10 @@ const config: Config = {
           foreground: "hsl(var(--destructive-foreground, 0, 0%, 100%))",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted, 216, 15%, 65%))",
-          foreground: "hsl(var(--muted-foreground, 222, 15%, 35%))",
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
+        pill: "hsl(var(--pill))",
         accent: {
           DEFAULT: "hsl(var(--accent, 210, 100%, 60%))",
           foreground: "hsl(var(--accent-foreground, 0, 0%, 100%))",
@@ -68,11 +74,14 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
-        heading: ["var(--font-poppins)", "sans-serif"],
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       animation: {
         blink: "blink 1s step-end infinite",
+      },
+      transitionTimingFunction: {
+        smooth: "cubic-bezier(0.32, 0.72, 0, 1)",
       },
       keyframes: {
         blink: {

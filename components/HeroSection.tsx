@@ -1,8 +1,10 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
+import Link from "next/link"
 import { ArrowRight, Phone } from "lucide-react"
+import SectionWatermark from "./SectionWatermark"
 
 const roles = [
   "Web Developer?",
@@ -18,126 +20,104 @@ export default function HeroSection() {
   const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
-    const currentRole = roles[roleIndex]
-    const typingSpeed = isDeleting ? 50 : 100 // Backspace faster than typing
-
+    const current = roles[roleIndex]
+    const speed = isDeleting ? 40 : 80
     const timer = setTimeout(() => {
       if (isDeleting) {
-        // Backspacing
-        setDisplayText(currentRole.substring(0, displayText.length - 1))
-
         if (displayText.length === 0) {
           setIsDeleting(false)
-          setRoleIndex((prev) => (prev + 1) % roles.length)
+          setRoleIndex((p) => (p + 1) % roles.length)
+        } else {
+          setDisplayText(current.slice(0, displayText.length - 1))
         }
       } else {
-        // Typing
-        if (displayText.length < currentRole.length) {
-          setDisplayText(currentRole.substring(0, displayText.length + 1))
+        if (displayText.length < current.length) {
+          setDisplayText(current.slice(0, displayText.length + 1))
         } else {
-          // Pause before deleting
-          setTimeout(() => setIsDeleting(true), 2000)
+          setTimeout(() => setIsDeleting(true), 1800)
         }
       }
-    }, typingSpeed)
-
+    }, speed)
     return () => clearTimeout(timer)
   }, [displayText, isDeleting, roleIndex])
 
   return (
-    <section
-      id="home"
-      className="relative h-screen flex items-center justify-center bg-white dark:bg-black px-4 sm:px-6 lg:px-8 pt-20"
-    >
-      <div className="max-w-6xl mx-auto w-full">
-        <motion.div
+    <section id="home" className="relative min-h-screen min-h-[100dvh] flex flex-col items-center justify-center px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 pt-24 xs:pt-28 sm:pt-28 pb-16 xs:pb-20 sm:pb-24 overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(var(--muted))/0.4,transparent)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.15)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.15)_1px,transparent_1px)] bg-[size:48px_48px] xs:bg-[size:56px_56px] sm:bg-[size:64px_64px] md:bg-[size:72px_72px]" />
+      </div>
+
+      <SectionWatermark position="bottom-right" />
+
+      <div className="max-w-4xl mx-auto text-center relative z-10 w-full">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-[11px] xs:text-[12px] sm:text-[13px] font-semibold text-[hsl(var(--muted-foreground))] uppercase tracking-[0.15em] xs:tracking-[0.2em] mb-6 xs:mb-8 sm:mb-10"
+        >
+          Digital Excellence
+        </motion.p>
+
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="space-y-6 sm:space-y-8"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-[-0.02em] text-[hsl(var(--foreground))] leading-[1.1] mb-4 xs:mb-5 sm:mb-6 font-heading"
         >
-          {/* Small Label */}
-          <motion.p
+          Looking for a
+        </motion.h1>
+
+        <div className="min-h-[1.2em] flex justify-center items-center mb-4 xs:mb-5 sm:mb-6">
+          <motion.h2
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-xs tracking-[0.3em] text-gray-500 dark:text-gray-400 uppercase font-medium"
+            transition={{ delay: 0.3 }}
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-[-0.02em] font-heading flex items-center justify-center gap-1"
           >
-            Digital Excellence
-          </motion.p>
+            <span className="hero-gradient-text">{displayText}</span>
+            <motion.span animate={{ opacity: [1, 0] }} transition={{ duration: 0.6, repeat: Infinity }} className="inline-block w-0.5 h-[0.85em] bg-[hsl(var(--accent-orange))] ml-0.5 align-middle rounded" />
+          </motion.h2>
+        </div>
 
-          {/* Main Heading */}
-          <div className="space-y-3 sm:space-y-4">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-semibold text-black dark:text-white tracking-tight leading-[1.1]">
-              Looking for a
-            </h1>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="text-base xs:text-lg sm:text-xl md:text-2xl font-medium text-[hsl(var(--muted-foreground))] mb-4 xs:mb-5 sm:mb-6 max-w-2xl mx-auto"
+        >
+          You&apos;ve come to the <span className="text-[hsl(var(--accent-orange))] font-semibold">right place.</span>
+        </motion.p>
 
-            {/* Typing Animation */}
-            <div className="min-h-[1.3em] flex items-center">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold text-black dark:text-white tracking-tight">
-                {displayText}
-                <motion.span
-                  animate={{ opacity: [1, 0, 1] }}
-                  transition={{ duration: 0.8, repeat: Infinity }}
-                  className="inline-block w-1 h-[0.9em] bg-black dark:bg-white ml-1 align-middle"
-                />
-              </h2>
-            </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="text-[14px] xs:text-[15px] sm:text-base font-medium text-[hsl(var(--muted-foreground))] mb-10 xs:mb-12 sm:mb-14 max-w-lg mx-auto leading-relaxed px-2"
+        >
+          We craft exceptional digital experiences with precision and care.
+          Every project is an opportunity to create something remarkable.
+        </motion.p>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-gray-600 dark:text-gray-400 pt-4"
-            >
-              You&apos;ve come to the right place.
-            </motion.p>
-          </div>
-
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed"
-          >
-            We craft exceptional digital experiences with precision and care.
-            Every project is an opportunity to create something remarkable.
-          </motion.p>
-
-          {/* CTA Buttons - Smaller & Minimal */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4"
-          >
-            {/* Primary CTA */}
-            <motion.a
-              href="tel:+917774897159"
-              className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-black dark:bg-white text-white dark:text-black text-sm font-medium rounded-xl hover:bg-black/90 dark:hover:bg-white/90 transition-all shadow-md hover:shadow-lg"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Phone className="w-4 h-4" />
-              <div className="flex flex-col items-start">
-                <span className="text-[10px] opacity-70">Amanullah Shaikh</span>
-                <span className="font-heading font-semibold text-sm">+91 77748 97159</span>
-              </div>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </motion.a>
-
-            {/* Secondary CTA */}
-            <motion.a
-              href="#projects"
-              className="group inline-flex items-center justify-center gap-2 px-6 py-3 border border-black dark:border-white text-black dark:text-white text-sm font-medium rounded-xl hover:bg-black/5 dark:hover:bg-white/5 transition-all"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="font-heading font-semibold">View Work</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </motion.a>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+          className="flex flex-col xs:flex-row flex-wrap items-center justify-center gap-3 xs:gap-4"
+        >
+          <Link href="#projects">
+            <span className="inline-flex items-center gap-2 px-5 xs:px-6 sm:px-7 py-3 xs:py-3.5 sm:py-4 text-[14px] xs:text-[15px] font-semibold rounded-full bg-[hsl(var(--foreground))] text-[hsl(var(--background))] hover:opacity-90 transition-opacity duration-200 w-full xs:w-auto justify-center">
+              View Work
+              <ArrowRight className="w-4 h-4 shrink-0" />
+            </span>
+          </Link>
+          <a href="tel:+917774897159">
+            <span className="inline-flex items-center justify-center gap-2 px-5 xs:px-6 sm:px-7 py-3 xs:py-3.5 sm:py-4 text-[14px] xs:text-[15px] font-semibold rounded-full border border-[hsl(var(--border))] text-[hsl(var(--foreground))] hover:bg-[hsl(var(--pill))] transition-colors duration-200 w-full xs:w-auto">
+              Call Us
+              <Phone className="w-4 h-4 shrink-0" />
+            </span>
+          </a>
         </motion.div>
       </div>
     </section>

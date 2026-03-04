@@ -2,95 +2,99 @@
 
 import { motion } from "framer-motion"
 import { useTheme } from "next-themes"
-import { FaReact, FaNodeJs, FaPython, FaDocker, FaAws, FaPhp, FaJava } from "react-icons/fa"
+import SectionWatermark from "./SectionWatermark"
+import { FaReact, FaNodeJs, FaPython, FaDocker, FaAws } from "react-icons/fa"
 import {
-  SiJavascript,
-  SiTypescript,
-  SiCss3,
-  SiMongodb,
-  SiTailwindcss,
-  SiNextdotjs,
-  SiHtml5,
-  SiGraphql,
-  SiGoogleads,
-  SiFirebase,
-  SiTensorflow,
-  SiScikitlearn,
-  SiExpress,
+  SiJavascript, SiTypescript, SiCss3, SiMongodb, SiTailwindcss, SiNextdotjs, SiHtml5,
+  SiGraphql, SiFirebase, SiExpress, SiPrisma, SiPostgresql, SiRedis, SiVite, SiVercel,
+  SiVuedotjs, SiSvelte, SiAngular, SiRedux, SiGit, SiGithub, SiNginx, SiLinux,
+  SiFigma, SiPostman, SiSupabase, SiStrapi, SiCloudflare, SiPfsense, SiNpm,
+  SiKalilinux, SiWireshark, SiBurpsuite,
 } from "react-icons/si"
 
 const skills = [
-  { name: "HTML", icon: SiHtml5, lightColor: "#E34F26", darkColor: "#E34F26" },
-  { name: "CSS3", icon: SiCss3, lightColor: "#1572B6", darkColor: "#1572B6" },
-  { name: "JavaScript", icon: SiJavascript, lightColor: "#000000", darkColor: "#F7DF1E" },
-  { name: "TypeScript", icon: SiTypescript, lightColor: "#3178C6", darkColor: "#3178C6" },
-  { name: "React.js", icon: FaReact, lightColor: "#61DAFB", darkColor: "#61DAFB" },
-  { name: "Next.js", icon: SiNextdotjs, lightColor: "#000000", darkColor: "#FFFFFF" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, lightColor: "#06B6D4", darkColor: "#06B6D4" },
-  { name: "Node.js", icon: FaNodeJs, lightColor: "#339933", darkColor: "#339933" },
-  { name: "Express.js", icon: SiExpress, lightColor: "#000000", darkColor: "#FFFFFF" },
-  { name: "MongoDB", icon: SiMongodb, lightColor: "#47A248", darkColor: "#47A248" },
-  { name: "Docker", icon: FaDocker, lightColor: "#2496ED", darkColor: "#2496ED" },
-  { name: "AWS", icon: FaAws, lightColor: "#FF9900", darkColor: "#FF9900" },
-  { name: "GraphQL", icon: SiGraphql, lightColor: "#E535AB", darkColor: "#E535AB" },
-  { name: "Google Ads", icon: SiGoogleads, lightColor: "#F4B400", darkColor: "#F4B400" },
-  { name: "Firebase", icon: SiFirebase, lightColor: "#FFCA28", darkColor: "#FFCA28" },
-  { name: "PHP", icon: FaPhp, lightColor: "#777BB4", darkColor: "#777BB4" },
-  { name: "Java", icon: FaJava, lightColor: "#007396", darkColor: "#007396" },
-  { name: "Python", icon: FaPython, lightColor: "#3776AB", darkColor: "#3776AB" },
-  { name: "TensorFlow", icon: SiTensorflow, lightColor: "#FF6F00", darkColor: "#FF6F00" },
-  { name: "Scikit-learn", icon: SiScikitlearn, lightColor: "#F7931E", darkColor: "#F7931E" },
+  { name: "HTML", icon: SiHtml5, color: "#E34F26" },
+  { name: "CSS3", icon: SiCss3, color: "#1572B6" },
+  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  { name: "React", icon: FaReact, color: "#61DAFB" },
+  { name: "Next.js", icon: SiNextdotjs, color: "#000", darkColor: "#e5e5e5" },
+  { name: "Redux", icon: SiRedux, color: "#764ABC" },
+  { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "Vite", icon: SiVite, color: "#646CFF" },
+  { name: "Node.js", icon: FaNodeJs, color: "#339933" },
+  { name: "Express", icon: SiExpress, color: "#000", darkColor: "#e5e5e5" },
+  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+  { name: "Redis", icon: SiRedis, color: "#DC382D" },
+  { name: "Prisma", icon: SiPrisma, color: "#2D3748" },
+  { name: "GraphQL", icon: SiGraphql, color: "#E535AB" },
+  { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+  { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
+  { name: "Docker", icon: FaDocker, color: "#2496ED" },
+  { name: "AWS", icon: FaAws, color: "#FF9900" },
+  { name: "Vercel", icon: SiVercel, color: "#000", darkColor: "#e5e5e5" },
+  { name: "Git", icon: SiGit, color: "#F05032" },
+  { name: "GitHub", icon: SiGithub, color: "#000", darkColor: "#e5e5e5" },
+  { name: "Nginx", icon: SiNginx, color: "#009639" },
+  { name: "Linux", icon: SiLinux, color: "#FCC624" },
+  { name: "Python", icon: FaPython, color: "#3776AB" },
+  { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+  { name: "Strapi", icon: SiStrapi, color: "#2F2E8B" },
+  { name: "Postman", icon: SiPostman, color: "#FF6C37" },
+  { name: "npm", icon: SiNpm, color: "#CB3837" },
+  { name: "Networking", icon: SiCloudflare, color: "#F38020" },
+  { name: "Firewall", icon: SiPfsense, color: "#212121", darkColor: "#e5e5e5" },
+  { name: "Cybersecurity", icon: SiPfsense, color: "#FF6B35", darkColor: "#FF6B35" },
+  { name: "Kali Linux", icon: SiKalilinux, color: "#557C94", darkColor: "#68A0B8" },
+  { name: "Wireshark", icon: SiWireshark, color: "#1679A7", darkColor: "#1E9AD6" },
+  { name: "Burp Suite", icon: SiBurpsuite, color: "#FF6633", darkColor: "#FF6633" },
 ]
 
 export default function SkillsSection() {
   const { theme } = useTheme()
+  const isDark = theme === "dark"
 
   return (
-    <section id="skills" className="min-h-screen flex items-center bg-white dark:bg-black py-20 pt-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        {/* Header */}
+    <section id="skills" className="relative py-16 xs:py-20 sm:py-24 md:py-28 lg:py-32 xl:py-36 px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 overflow-hidden border-t border-[hsl(var(--border))]">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,hsl(var(--muted))/0.25,transparent_70%)]" />
+
+      <SectionWatermark position="center-right" />
+
+      <div className="relative max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-12 sm:mb-16"
+          transition={{ duration: 0.5 }}
+          className="mb-12 xs:mb-14 sm:mb-16 md:mb-20 text-center"
         >
-          <p className="text-xs tracking-[0.3em] text-gray-500 dark:text-gray-400 uppercase font-medium mb-4">
-            Technologies
-          </p>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-semibold text-black dark:text-white tracking-tight">
+          <p className="text-[11px] xs:text-[12px] sm:text-[13px] font-semibold text-[hsl(var(--muted-foreground))] uppercase tracking-[0.15em] xs:tracking-[0.2em] mb-3 xs:mb-4">Technologies</p>
+          <h2 className="text-3xl xs:text-4xl sm:text-4xl md:text-5xl font-bold tracking-[-0.02em] text-[hsl(var(--foreground))] font-heading mb-3 xs:mb-4">
             Skills
           </h2>
+          <p className="text-[13px] xs:text-[14px] sm:text-base font-medium text-[hsl(var(--muted-foreground))] max-w-xl mx-auto px-2">
+            The modern stack we use to build scalable, performant products.
+          </p>
         </motion.div>
 
-        {/* Skills Cloud - Compact Boxes */}
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 items-center">
-          {skills.map((skill, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.02 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.1, y: -4 }}
-              className="group"
-            >
-              {/* Compact Cloud Box - Auto Size */}
-              <div className="relative inline-flex items-center gap-2 sm:gap-2.5 p-3 sm:p-4 bg-white dark:bg-gray-950 rounded-xl sm:rounded-2xl border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 transition-all duration-300 shadow-md hover:shadow-xl">
-                <skill.icon
-                  size={28}
-                  className="transition-transform duration-300 group-hover:scale-110 flex-shrink-0"
-                  style={{
-                    color: theme === "dark" ? skill.darkColor : skill.lightColor
-                  }}
-                />
-                <span className="text-xs sm:text-sm font-heading font-semibold text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors whitespace-nowrap">
-                  {skill.name}
-                </span>
-              </div>
-            </motion.div>
-          ))}
+        <div className="flex flex-wrap justify-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-4 px-1">
+          {skills.map((skill, i) => {
+            const iconColor = isDark && "darkColor" in skill ? (skill as { darkColor?: string }).darkColor : skill.color
+            return (
+              <motion.div
+                key={skill.name}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: Math.min(i * 0.012, 0.4) }}
+                className="inline-flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 md:gap-3 px-2.5 xs:px-3 sm:px-4 md:px-5 py-2 xs:py-2.5 sm:py-3 md:py-3.5 rounded-lg xs:rounded-xl sm:rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] text-[hsl(var(--foreground))] text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] font-semibold hover:border-[hsl(var(--foreground))]/15 hover:shadow-[0_4px_14px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_4px_14px_rgba(0,0,0,0.15)] transition-all duration-200 cursor-default shrink-0"
+              >
+                <skill.icon className="shrink-0 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" style={{ color: iconColor }} />
+                {skill.name}
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>

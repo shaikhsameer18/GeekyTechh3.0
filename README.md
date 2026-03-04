@@ -15,6 +15,14 @@ Welcome to **GeekyTechh 3.0**! This repository is for **GeekyTechh**, a Freelanc
 
 ---
 
+## Favicon & SEO
+
+Favicons live in **`public/favicon/`**. All icon types are wired up (ico, svg, png, apple-touch, PWA 192/512).
+
+**For indexing, sitemap, and ranking:** see **[SEO_RANKING_GUIDE.md](./SEO_RANKING_GUIDE.md)**.
+
+---
+
 ## Tech Stack
 
 - **TypeScript**: Core language for building scalable and maintainable code (93.2% of the codebase).

@@ -1,4 +1,4 @@
-import { Inter, Poppins, Space_Grotesk, Montserrat } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { ThemeProvider } from "@/components/theme-provider"
 import { StructuredData } from "@/components/StructuredData"
 import "./globals.css"
@@ -13,20 +13,10 @@ export const viewport: Viewport = {
   maximumScale: 5,
 }
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
-const poppins = Poppins({
-  weight: ["400", "500", "600", "700"],
+const inter = Inter({
+  weight: ["500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-poppins",
-})
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-})
-const montserrat = Montserrat({
-  weight: ["700", "800", "900"],
-  subsets: ["latin"],
-  variable: "--font-montserrat",
+  variable: "--font-sans",
 })
 
 export const metadata: Metadata = {
@@ -36,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | GeekyTechh"
   },
   description:
-    "GeekyTechh delivers high-performance custom websites, e-commerce solutions, and cutting-edge digital experiences. We specialize in Next.js, AI/ML, and UI/UX design to transform your brand globally.",
+    "GeekyTechh - Premium web development agency in Mumbai. Custom websites, e-commerce, UI/UX design, AI/ML solutions & cybersecurity. Next.js, React experts. Transform your digital presence.",
   keywords: [
     "web development India",
     "custom website development",
@@ -73,8 +63,8 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: 'https://www.geekytechh.in',
     siteName: 'GeekyTechh',
-    title: 'GeekyTechh - Premium Web Development & Digital Solutions',
-    description: 'Transform your business with professional web development, e-commerce solutions, and innovative digital experiences from India\'s leading tech agency.',
+    title: 'GeekyTechh - Premium Web Development & Digital Solutions | Mumbai',
+    description: 'Mumbai-based web development agency. Custom websites, e-commerce, UI/UX, AI/ML & cybersecurity. Next.js & React experts. Get a free quote today.',
     images: [
       {
         url: '/og-image.png',
@@ -99,12 +89,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.ico", sizes: "64x64", type: "image/x-icon" },
+      { url: "/favicon/favicon.ico", sizes: "any" },
+      { url: "/favicon/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
     ],
-    shortcut: ["/favicon.ico"],
+    shortcut: ["/favicon/favicon.ico"],
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
   manifest: '/site.webmanifest',
@@ -117,7 +108,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${poppins.variable} ${spaceGrotesk.variable} ${montserrat.variable}`}>
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
         {/* Structured Data for SEO */}
         <StructuredData />
@@ -137,7 +128,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="font-sans bg-background text-foreground">
+      <body className="font-sans font-medium bg-background text-foreground antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>

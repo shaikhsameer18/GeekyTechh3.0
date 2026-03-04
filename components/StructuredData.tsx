@@ -3,19 +3,32 @@ import type { Metadata } from 'next'
 export const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
+    '@id': 'https://www.geekytechh.in/#organization',
     name: 'GeekyTechh',
     alternateName: 'Geeky Techh',
     url: 'https://www.geekytechh.in',
-    logo: 'https://www.geekytechh.in/logo.png',
+    logo: 'https://www.geekytechh.in/favicon/web-app-manifest-512x512.png',
+    image: 'https://www.geekytechh.in/favicon/web-app-manifest-512x512.png',
     description: 'Premium Web Development & Digital Solutions - Custom websites, e-commerce platforms, and innovative digital experiences in India',
     address: {
         '@type': 'PostalAddress',
+        addressLocality: 'Mumbai',
+        addressRegion: 'Maharashtra',
         addressCountry: 'IN',
+    },
+    geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 19.0760,
+        longitude: 72.8777,
     },
     contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'Customer Service',
+        telephone: '+91-77748-97159',
+        email: 'geekytechh@gmail.com',
         availableLanguage: ['English', 'Hindi'],
+        areaServed: 'IN',
+        hoursAvailable: { '@type': 'OpeningHours', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '10:00', closes: '20:00' },
     },
     sameAs: [
         'https://github.com/shaikhsameer18',
@@ -31,8 +44,22 @@ export const organizationSchema = {
         'UI/UX Design',
         'Mobile App Development',
         'AI/ML Solutions',
-        'Digital Marketing',
-        'SEO Optimization',
+        'Network & Cybersecurity',
+        'IT Consulting',
+    ],
+    knowsAbout: ['Next.js', 'React', 'Node.js', 'TypeScript', 'UI/UX Design', 'Cybersecurity'],
+}
+
+export const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: [
+        { '@type': 'ListItem', position: 1, item: { '@type': 'Service', name: 'Web Development', description: 'Modern, responsive websites with cutting-edge technologies' } },
+        { '@type': 'ListItem', position: 2, item: { '@type': 'Service', name: 'AI/ML Solutions', description: 'Intelligent systems and machine learning solutions' } },
+        { '@type': 'ListItem', position: 3, item: { '@type': 'Service', name: 'UI/UX Design', description: 'Intuitive and visually compelling user experiences' } },
+        { '@type': 'ListItem', position: 4, item: { '@type': 'Service', name: 'Backend Development', description: 'Scalable and secure server-side architectures' } },
+        { '@type': 'ListItem', position: 5, item: { '@type': 'Service', name: 'Network & Cybersecurity', description: 'Secure network infrastructure and cybersecurity solutions' } },
+        { '@type': 'ListItem', position: 6, item: { '@type': 'Service', name: 'IT Consulting', description: 'Strategic technology guidance to accelerate growth' } },
     ],
 }
 
@@ -106,6 +133,12 @@ export function StructuredData() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify(breadcrumbSchema),
+                }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(serviceSchema),
                 }}
             />
         </>
