@@ -7,7 +7,7 @@ import codecollab from "@/app/assets/projectimg/codecollab.png"
 import aliport from "@/app/assets/projectimg/aliportfolio.png"
 import eventmind from "@/app/assets/projectimg/event.png"
 import searchbag from "@/app/assets/projectimg/search.png"
-import lainabag from "@/app/assets/projectimg/lainabag.png"
+import lainabag from "@/app/assets/projectimg/laina.png"
 import alvira from "@/app/assets/projectimg/alvira.png"
 
 const projects = [
