@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     creator: '@geekytechh',
   },
   verification: {
-    google: 'YOUR_GOOGLE_VERIFICATION_CODE_HERE',
+    google: 'EuRCh79QPJnSufzFj9wdfxfcOC59AuKR6aBGsP31L-k',
   },
   alternates: {
     canonical: 'https://www.geekytechh.in',
