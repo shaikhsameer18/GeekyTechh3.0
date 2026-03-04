@@ -8,21 +8,55 @@ import aliport from "@/app/assets/projectimg/aliportfolio.png"
 import eventmind from "@/app/assets/projectimg/event.png"
 import searchbag from "@/app/assets/projectimg/search.png"
 import portfolio from "@/app/assets/projectimg/portfolio.png"
-import reflectblog from "@/app/assets/projectimg/reflectblog.png"
-import reflectcode from "@/app/assets/projectimg/reflectcode.png"
+import lainabag from "@/app/assets/projectimg/lainabag.png"
 import alvira from "@/app/assets/projectimg/alv.png"
 import SectionWatermark from "./SectionWatermark"
 
 const projects = [
-  { title: "Event Mind", category: "Productivity", description: "Event management platform with real-time collaboration.", image: eventmind, link: "https://event-mind.vercel.app/" },
-  { title: "CodeCollab", category: "Developer Tools", description: "AI-powered collaborative code editor.", image: codecollab, link: "https://codecollabfinal.vercel.app/" },
-  { title: "Search Bags", category: "E-Commerce", description: "Luxury bag e-commerce platform.", image: searchbag, link: "https://www.searchbag.in/" },
-  { title: "Ali Portfolio", category: "Personal", description: "Responsive portfolio with clean design.", image: aliport, link: "https://mohd-ali.vercel.app/" },
-  { title: "Developer Portfolio", category: "Personal", description: "Modern portfolio showcasing work.", image: portfolio, link: "#" },
-  { title: "Reflect Blog", category: "Content", description: "Minimal blogging platform.", image: reflectblog, link: "#" },
-  { title: "Reflect Code", category: "Developer Tools", description: "Code snippet manager.", image: reflectcode, link: "#" },
-  { title: "Alvira Bags", category: "E-Commerce", description: "Premium bag collection.", image: alvira, link: "#" },
-]
+  {
+    title: "Event Mind",
+    category: "Productivity",
+    description: "Event management platform with real-time collaboration.",
+    image: eventmind,
+    link: "https://event-mind.vercel.app/"
+  },
+  {
+    title: "Laina Bags",
+    category: "E-Commerce",
+    description: "Premium fashion bags e-commerce platform.",
+    image: lainabag,
+    link: "https://www.lainabags.com/"
+  },
+  {
+    title: "CodeCollab",
+    category: "Developer Tools",
+    description: "AI-powered collaborative code editor.",
+    image: codecollab,
+    link: "https://codecollabfinal.vercel.app/"
+  },
+  {
+    title: "Search Bags",
+    category: "E-Commerce",
+    description: "Luxury bag e-commerce platform.",
+    image: searchbag,
+    link: "https://www.searchbag.in/"
+  },
+  {
+    title: "Ali Portfolio",
+    category: "Personal",
+    description: "Responsive portfolio with clean design.",
+    image: aliport,
+    link: "https://mohd-ali.vercel.app/"
+  },
+
+  {
+    title: "Alvira Bags",
+    category: "E-Commerce",
+    description: "Premium bag collection website.",
+    image: alvira,
+    link: "https://alvirabag.vercel.app/"
+  },
+];
 
 export default function ProjectsSection() {
   return (
