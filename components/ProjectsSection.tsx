@@ -7,10 +7,8 @@ import codecollab from "@/app/assets/projectimg/codecollab.png"
 import aliport from "@/app/assets/projectimg/aliportfolio.png"
 import eventmind from "@/app/assets/projectimg/event.png"
 import searchbag from "@/app/assets/projectimg/search.png"
-import portfolio from "@/app/assets/projectimg/portfolio.png"
 import lainabag from "@/app/assets/projectimg/lainabag.png"
-import alvira from "@/app/assets/projectimg/alv.png"
-import SectionWatermark from "./SectionWatermark"
+import alvira from "@/app/assets/projectimg/alvira.png"
 
 const projects = [
   {
@@ -62,8 +60,6 @@ export default function ProjectsSection() {
   return (
     <section id="projects" className="relative py-16 xs:py-20 sm:py-24 md:py-28 lg:py-32 xl:py-36 px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 overflow-hidden border-t border-[hsl(var(--border))]">
       <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,hsl(var(--muted))/0.1_50%,transparent_100%)]" />
-
-      <SectionWatermark position="bottom-left" />
 
       <div className="relative max-w-6xl mx-auto">
         <motion.div
