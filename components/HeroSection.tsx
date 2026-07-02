@@ -110,16 +110,16 @@ export default function HeroSection() {
           transition={{ delay: 0.7 }}
           className="flex flex-col xs:flex-row flex-wrap items-center justify-center gap-3 xs:gap-4"
         >
-          <Link href="/#contact">
-            <span className="inline-flex items-center gap-2 px-5 xs:px-6 sm:px-7 py-3 xs:py-3.5 sm:py-4 text-[14px] xs:text-[15px] font-semibold rounded-full bg-[hsl(var(--foreground))] text-[hsl(var(--background))] hover:opacity-90 transition-opacity duration-200 w-full xs:w-auto justify-center">
+          <Link href="/#contact" className="w-full xs:w-auto">
+            <span className="group inline-flex items-center gap-2 px-5 xs:px-6 sm:px-7 py-3 xs:py-3.5 sm:py-4 text-[14px] xs:text-[15px] font-semibold rounded-full bg-[hsl(var(--foreground))] text-[hsl(var(--background))] hover:opacity-90 active:scale-[0.98] transition-all duration-200 w-full xs:w-auto justify-center">
               Start a project
-              <ArrowRight className="w-4 h-4 shrink-0" />
+              <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
             </span>
           </Link>
-          <Link href="/work">
-            <span className="inline-flex items-center justify-center gap-2 px-5 xs:px-6 sm:px-7 py-3 xs:py-3.5 sm:py-4 text-[14px] xs:text-[15px] font-semibold rounded-full border border-[hsl(var(--border))] text-[hsl(var(--foreground))] hover:bg-[hsl(var(--pill))] transition-colors duration-200 w-full xs:w-auto">
+          <Link href="/work" className="w-full xs:w-auto">
+            <span className="group inline-flex items-center justify-center gap-2 px-5 xs:px-6 sm:px-7 py-3 xs:py-3.5 sm:py-4 text-[14px] xs:text-[15px] font-semibold rounded-full border border-[hsl(var(--border))] text-[hsl(var(--foreground))] hover:bg-[hsl(var(--pill))] active:scale-[0.98] transition-all duration-200 w-full xs:w-auto">
               View Work
-              <ArrowUpRight className="w-4 h-4 shrink-0" />
+              <ArrowUpRight className="w-4 h-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>
           </Link>
         </motion.div>

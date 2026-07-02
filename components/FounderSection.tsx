@@ -82,9 +82,9 @@ export default function FounderSection() {
           transition={{ duration: 0.5 }}
           className="mt-10 xs:mt-12 flex justify-center"
         >
-          <Link href="/#contact" className="inline-flex items-center gap-2 px-6 py-3.5 text-[15px] font-semibold rounded-full bg-[hsl(var(--foreground))] text-[hsl(var(--background))] hover:opacity-90 transition-opacity">
+          <Link href="/#contact" className="group inline-flex items-center gap-2 px-6 py-3.5 text-[15px] font-semibold rounded-full bg-[hsl(var(--foreground))] text-[hsl(var(--background))] hover:opacity-90 active:scale-[0.98] transition-all">
             Start your project
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
         </motion.div>
       </div>
