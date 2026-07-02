@@ -1,7 +1,5 @@
 import type { StaticImageData } from "next/image"
 import codecollab from "@/app/assets/projectimg/codecollab.png"
-import aliport from "@/app/assets/projectimg/aliportfolio.png"
-import eventmind from "@/app/assets/projectimg/event.png"
 import searchbag from "@/app/assets/projectimg/search.png"
 import lainabag from "@/app/assets/projectimg/laina.png"
 import alvira from "@/app/assets/projectimg/alvira.png"
@@ -18,7 +16,7 @@ export interface CaseStudy {
   title: string
   /** Client / brand this was built for */
   client: string
-  category: "E-Commerce" | "Web App" | "Developer Tools" | "Portfolio"
+  category: "E-Commerce" | "Web App" | "Developer Tools"
   /** One line for cards */
   summary: string
   /** Whether this is a live production site we can point clients to */
@@ -100,31 +98,6 @@ export const caseStudies: CaseStudy[] = [
     featured: true,
   },
   {
-    slug: "event-mind",
-    title: "Event Mind",
-    client: "Event Mind",
-    category: "Web App",
-    summary: "An event-management platform with real-time collaboration for planning teams.",
-    live: true,
-    link: "https://event-mind.vercel.app/",
-    image: eventmind,
-    stack: ["Next.js", "React", "Node.js", "Tailwind CSS"],
-    challenge:
-      "Planning teams needed one place to organise events and collaborate without the mess of spreadsheets and scattered chats.",
-    approach: [
-      "Designed an intuitive dashboard around the real planning workflow.",
-      "Built collaborative, real-time-friendly interactions.",
-      "Kept the UI clean so non-technical users stay oriented.",
-    ],
-    outcome:
-      "A working product that turns event planning into a single, shared, organised workspace.",
-    metrics: [
-      { value: "Live", label: "In production" },
-      { value: "Real-time", label: "Collaboration" },
-    ],
-    featured: true,
-  },
-  {
     slug: "codecollab",
     title: "CodeCollab",
     client: "CodeCollab",
@@ -166,29 +139,6 @@ export const caseStudies: CaseStudy[] = [
       "Ensured a fully responsive experience across devices.",
     ],
     outcome: "A live, polished collection site running in production.",
-    metrics: [
-      { value: "Live", label: "In production" },
-      { value: "100%", label: "Responsive" },
-    ],
-    featured: false,
-  },
-  {
-    slug: "ali-portfolio",
-    title: "Ali Portfolio",
-    client: "Mohd Ali",
-    category: "Portfolio",
-    summary: "A responsive personal portfolio with a clean, modern design.",
-    live: true,
-    link: "https://mohd-ali.vercel.app/",
-    image: aliport,
-    stack: ["React", "Tailwind CSS", "Vercel"],
-    challenge:
-      "A clean, fast personal portfolio that presents work clearly and works perfectly on every device.",
-    approach: [
-      "Built a minimal, content-first layout.",
-      "Made it fully responsive and quick to load.",
-    ],
-    outcome: "A live portfolio that presents work cleanly across all screens.",
     metrics: [
       { value: "Live", label: "In production" },
       { value: "100%", label: "Responsive" },

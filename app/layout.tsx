@@ -72,20 +72,12 @@ export const metadata: Metadata = {
     siteName: 'GeekyTechh',
     title: 'GeekyTechh - Premium Web Development & Digital Solutions | Mumbai',
     description: 'Mumbai-based web development agency. Custom websites, e-commerce, UI/UX, AI/ML & cybersecurity. Next.js & React experts. Get a free quote today.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'GeekyTechh - Web Development Agency',
-      },
-    ],
+    // og:image is provided per-route by the file-based opengraph-image.tsx convention.
   },
   twitter: {
     card: 'summary_large_image',
     title: 'GeekyTechh - Premium Web Development & Digital Solutions',
     description: 'Transform your business with professional web development and digital solutions.',
-    images: ['/og-image.png'],
     creator: '@geekytechh',
   },
   verification: {
