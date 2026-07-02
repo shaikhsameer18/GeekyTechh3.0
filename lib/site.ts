@@ -20,11 +20,11 @@ export const site = {
   url: "https://www.geekytechh.in",
 } as const
 
-/** Honest, verifiable proof numbers. Update as the portfolio grows. */
+/** Honest, verifiable proof numbers. "98" = real avg mobile Lighthouse perf across client stores. */
 export const metrics: { value: string; label: string }[] = [
-  { value: "6+", label: "Products shipped" },
+  { value: "98", label: "Avg. performance" },
   { value: "100%", label: "Live in production" },
-  { value: "5", label: "Live domains" },
+  { value: "5+", label: "Projects shipped" },
   { value: "24h", label: "Reply time" },
 ]
 
@@ -32,8 +32,6 @@ export const metrics: { value: string; label: string }[] = [
 export const clientBrands: { name: string; href: string }[] = [
   { name: "Laina Bags", href: "https://www.lainabags.com/" },
   { name: "Search Bag", href: "https://www.searchbag.in/" },
-  { name: "Alvira", href: "https://alvirabag.vercel.app/" },
-  { name: "Event Mind", href: "https://event-mind.vercel.app/" },
   { name: "CodeCollab", href: "https://codecollabfinal.vercel.app/" },
 ]
 

@@ -40,6 +40,7 @@ export default function Header() {
   useEffect(() => {
     if (pathname.startsWith("/work")) setActiveItem("Work")
     else if (pathname.startsWith("/services")) setActiveItem("Services")
+    else if (pathname.startsWith("/insights")) setActiveItem("Insights")
     else if (pathname.startsWith("/about")) setActiveItem("About")
     else setActiveItem("Home")
   }, [pathname])
@@ -48,6 +49,7 @@ export default function Header() {
     { label: "Home", href: "/#home" },
     { label: "Work", href: "/work" },
     { label: "Services", href: "/services" },
+    { label: "Insights", href: "/insights" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/#contact" },
   ]

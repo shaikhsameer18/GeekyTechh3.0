@@ -38,11 +38,9 @@ export interface CaseStudy {
 }
 
 /**
- * NOTE ON HONESTY: Every project here is real and live. Metrics are limited to
- * things Sameer can defend in a sales call — production status, responsive
- * coverage, performance posture, feature scope. Replace `metrics` with real
- * Lighthouse / analytics numbers once measured, and add client quotes to
- * `lib/site.ts` testimonials as they come in.
+ * NOTE ON HONESTY: Every project here is real and live. E-commerce client
+ * metrics are REAL Google Lighthouse scores (mobile). Re-measure at
+ * pagespeed.web.dev if a site changes.
  */
 export const caseStudies: CaseStudy[] = [
   {
@@ -64,11 +62,11 @@ export const caseStudies: CaseStudy[] = [
       "Structured the site for SEO so products are discoverable on search.",
     ],
     outcome:
-      "A live, production storefront the owner can point customers to with confidence — fast, polished, and consistent across every screen size.",
+      "A live, production storefront the owner can point customers to with confidence — and it scores 98/100 for performance and a perfect 100 for SEO on Google's mobile Lighthouse test.",
     metrics: [
-      { value: "Live", label: "In production" },
-      { value: "100%", label: "Mobile responsive" },
-      { value: "SEO", label: "Search-structured" },
+      { value: "98", label: "Lighthouse performance" },
+      { value: "100", label: "SEO score" },
+      { value: "100", label: "Best practices" },
     ],
     featured: true,
   },
@@ -90,10 +88,11 @@ export const caseStudies: CaseStudy[] = [
       "Made the full journey responsive from phone to desktop.",
     ],
     outcome:
-      "A live luxury storefront running in production with a consistent, premium browsing experience.",
+      "A live luxury storefront running in production — scoring 98/100 for performance and a perfect 100 for SEO on Google's mobile Lighthouse test.",
     metrics: [
-      { value: "Live", label: "In production" },
-      { value: "100%", label: "Responsive" },
+      { value: "98", label: "Lighthouse performance" },
+      { value: "100", label: "SEO score" },
+      { value: "96", label: "Best practices" },
     ],
     featured: true,
   },
