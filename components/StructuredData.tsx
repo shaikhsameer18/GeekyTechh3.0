@@ -1,5 +1,3 @@
-import type { Metadata } from 'next'
-
 export const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',

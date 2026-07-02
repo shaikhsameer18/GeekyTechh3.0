@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { Moon, Sun, Menu, X } from "lucide-react"
 import Image from "next/image"
@@ -15,12 +16,14 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeItem, setActiveItem] = useState("Home")
+  const pathname = usePathname()
 
   useEffect(() => {
     setMounted(true)
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 24)
-      const sections = ["home", "services", "skills", "projects", "contact"]
+      if (window.location.pathname !== "/") return
+      const sections = ["home", "services", "contact"]
       const current = sections.find(id => {
         const el = document.getElementById(id)
         if (!el) return false
@@ -33,7 +36,21 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navItems = ["Home", "Services", "Skills", "Projects", "Contact"]
+  // Route-aware active state for the dedicated pages.
+  useEffect(() => {
+    if (pathname.startsWith("/work")) setActiveItem("Work")
+    else if (pathname.startsWith("/services")) setActiveItem("Services")
+    else if (pathname.startsWith("/about")) setActiveItem("About")
+    else setActiveItem("Home")
+  }, [pathname])
+
+  const navItems: { label: string; href: string }[] = [
+    { label: "Home", href: "/#home" },
+    { label: "Work", href: "/work" },
+    { label: "Services", href: "/services" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/#contact" },
+  ]
 
   const handleNavClick = (item: string) => {
     setActiveItem(item)
@@ -63,7 +80,7 @@ export default function Header() {
   const rightEl = (
     <div className={`flex items-center shrink-0 ${isScrolled ? "gap-3 pl-4 ml-4 min-w-0" : "gap-4 pl-8 ml-6"} border-l border-[hsl(var(--border))]/50`}>
       <Link
-        href="#contact"
+        href="/#contact"
         onClick={() => handleNavClick("Contact")}
         className={`hidden sm:inline-flex items-center justify-center font-semibold rounded-full bg-[hsl(var(--foreground))] text-[hsl(var(--background))] hover:opacity-90 transition-all duration-200 whitespace-nowrap ${isScrolled ? "px-4 py-1.5 text-[13px]" : "px-5 py-2 text-[14px]"}`}
       >
@@ -110,20 +127,28 @@ export default function Header() {
 
           <nav className="hidden md:flex items-center justify-center absolute left-1/2 -translate-x-1/2 shrink-0">
             <div className={`flex items-center rounded-full ${!isScrolled ? "bg-[hsl(var(--pill))]" : "bg-transparent"} ${isScrolled ? "gap-0.5 px-1.5 py-1" : "gap-1 px-2 py-1"}`}>
-              {navItems.map((item) => (
-                <Link
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  onClick={() => handleNavClick(item)}
-                  className={`rounded-full transition-all duration-200 shrink-0 ${isScrolled ? "px-2.5 py-1 text-[13px]" : "px-3 py-1.5 text-[14px]"} font-semibold ${
-                    activeItem === item
-                      ? "bg-[hsl(var(--foreground))] text-[hsl(var(--background))]"
-                      : "text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--border))]/40"
-                  }`}
-                >
-                  {item}
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                const active = activeItem === item.label
+                return (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => handleNavClick(item.label)}
+                    className={`relative rounded-full transition-colors duration-200 shrink-0 ${isScrolled ? "px-2.5 py-1 text-[13px]" : "px-3 py-1.5 text-[14px]"} font-semibold ${
+                      active ? "text-[hsl(var(--background))]" : "text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]"
+                    }`}
+                  >
+                    {active && (
+                      <motion.span
+                        layoutId="nav-active"
+                        className="absolute inset-0 rounded-full bg-[hsl(var(--foreground))]"
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    <span className="relative z-10">{item.label}</span>
+                  </Link>
+                )
+              })}
             </div>
           </nav>
 
@@ -145,17 +170,17 @@ export default function Header() {
             <nav className="p-2 space-y-0.5">
               {navItems.map((item) => (
                 <Link
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  onClick={() => handleNavClick(item)}
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => handleNavClick(item.label)}
                   className={`block px-4 py-2.5 text-[14px] font-semibold rounded-lg transition-colors ${
-                    activeItem === item ? "bg-[hsl(var(--pill))] text-[hsl(var(--foreground))]" : "text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--pill))] hover:text-[hsl(var(--foreground))]"
+                    activeItem === item.label ? "bg-[hsl(var(--pill))] text-[hsl(var(--foreground))]" : "text-[hsl(var(--muted-foreground))] hover:bg-[hsl(var(--pill))] hover:text-[hsl(var(--foreground))]"
                   }`}
                 >
-                  {item}
+                  {item.label}
                 </Link>
               ))}
-              <Link href="#contact" onClick={() => handleNavClick("Contact")} className="flex items-center justify-center mx-2 mt-2 py-2.5 text-[14px] font-semibold rounded-lg bg-[hsl(var(--foreground))] text-[hsl(var(--background))]">
+              <Link href="/#contact" onClick={() => handleNavClick("Contact")} className="flex items-center justify-center mx-2 mt-2 py-2.5 text-[14px] font-semibold rounded-lg bg-[hsl(var(--foreground))] text-[hsl(var(--background))]">
                 Get in Touch
               </Link>
             </nav>

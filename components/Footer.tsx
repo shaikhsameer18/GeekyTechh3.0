@@ -42,7 +42,13 @@ export default function Footer() {
     }
   }
 
-  const navItems = ["Home", "Services", "Skills", "Projects", "Contact"]
+  const navItems: { label: string; href: string }[] = [
+    { label: "Home", href: "/#home" },
+    { label: "Work", href: "/work" },
+    { label: "Services", href: "/services" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/#contact" },
+  ]
   const isDarkFooter = theme !== "dark" // light theme = dark footer, dark theme = light footer
 
   return (
@@ -89,16 +95,13 @@ export default function Footer() {
             <nav className="flex flex-col gap-2.5 xs:gap-3">
               {navItems.map((item) => (
                 <Link
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
+                  key={item.label}
+                  href={item.href}
                   className="text-[13px] xs:text-[14px] font-medium opacity-90 hover:opacity-100 hover:underline hover:underline-offset-2 transition-all duration-300 hover:translate-x-1 w-fit"
                 >
-                  {item}
+                  {item.label}
                 </Link>
               ))}
-              <Link href="#contact" className="text-[13px] xs:text-[14px] font-medium opacity-90 hover:opacity-100 hover:underline hover:underline-offset-2 transition-all duration-300 hover:translate-x-1 w-fit">
-                Get in Touch
-              </Link>
             </nav>
           </div>
 

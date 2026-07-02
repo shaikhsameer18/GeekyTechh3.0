@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion"
 import { Globe, Bot, Palette, Server, Shield, Briefcase } from "lucide-react"
 import { useRef } from "react"
 import SectionWatermark from "./SectionWatermark"
+import TiltCard from "./TiltCard"
 
 const services = [
   { icon: Globe, title: "Web Development", desc: "Modern, responsive websites built with cutting-edge technologies." },
@@ -46,17 +47,17 @@ export default function ServicesSection() {
         <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 lg:gap-8 items-stretch">
           {services.map((s, i) => (
             <FadeUp key={i} delay={i * 0.06} className="flex h-full">
-              <div className="group flex flex-col w-full p-5 xs:p-6 sm:p-7 md:p-8 lg:p-10 rounded-xl xs:rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] hover:border-[hsl(var(--foreground))]/15 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-300">
-                <div className="inline-flex p-3 xs:p-4 rounded-xl xs:rounded-2xl bg-[hsl(var(--pill))] group-hover:bg-[hsl(var(--muted))] mb-4 xs:mb-5 sm:mb-6 transition-colors duration-300 w-fit">
+              <TiltCard className="group flex flex-col w-full p-5 xs:p-6 sm:p-7 md:p-8 lg:p-10 rounded-xl xs:rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] hover:border-[hsl(var(--foreground))]/15 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)]">
+                <div className="inline-flex p-3 xs:p-4 rounded-xl xs:rounded-2xl bg-[hsl(var(--pill))] group-hover:bg-[hsl(var(--muted))] mb-4 xs:mb-5 sm:mb-6 transition-colors duration-300 w-fit" style={{ transform: "translateZ(40px)" }}>
                   <s.icon className="w-6 xs:w-7 sm:w-8 h-6 xs:h-7 sm:h-8 text-[hsl(var(--foreground))]" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-lg xs:text-xl font-bold text-[hsl(var(--foreground))] mb-2 xs:mb-3 font-heading">
+                <h3 className="text-lg xs:text-xl font-bold text-[hsl(var(--foreground))] mb-2 xs:mb-3 font-heading" style={{ transform: "translateZ(24px)" }}>
                   {s.title}
                 </h3>
                 <p className="text-[13px] xs:text-[14px] sm:text-[15px] font-medium text-[hsl(var(--muted-foreground))] leading-relaxed flex-1">
                   {s.desc}
                 </p>
-              </div>
+              </TiltCard>
             </FadeUp>
           ))}
         </div>

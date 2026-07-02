@@ -1,6 +1,12 @@
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from "@/components/theme-provider"
 import { StructuredData } from "@/components/StructuredData"
+import CustomCursor from "@/components/CustomCursor"
+import ScrollProgress from "@/components/ScrollProgress"
+import Preloader from "@/components/Preloader"
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
+import ScrollToTop from "@/components/ScrollToTop"
 import "./globals.css"
 import type { Metadata, Viewport } from 'next'
 import React from 'react';
@@ -17,6 +23,7 @@ const inter = Inter({
   weight: ["500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -130,7 +137,14 @@ export default function RootLayout({
       </head>
       <body className="font-sans font-medium bg-background text-foreground antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <a href="#main-content" className="skip-link">Skip to content</a>
+          <Preloader />
+          <ScrollProgress />
+          <CustomCursor />
+          <Header />
           {children}
+          <Footer />
+          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>
